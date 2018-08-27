@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MainDirectorScript : MonoBehaviour {
 
+    public static bool boolLeveleStart = false;
+
 	// Use this for initialization
 	void Start () {
 		
