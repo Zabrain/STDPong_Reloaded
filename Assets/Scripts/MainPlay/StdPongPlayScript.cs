@@ -31,7 +31,7 @@ public class StdPongPlayScript : MonoBehaviour {
 
         spriteRenderer.sprite = BackgroundSprite[1]; //assign the appropriate sprite
 
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        //SpriteRenderer sr = GetComponent<SpriteRenderer>();
 
         float cameraHeight = Camera.main.orthographicSize * 2;
         Vector2 cameraSize = new Vector2(Camera.main.aspect * cameraHeight, cameraHeight);
