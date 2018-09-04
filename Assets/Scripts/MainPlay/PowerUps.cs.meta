@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: a81986d57f40c194995f2644f0df4ded
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Abstain_Object: {fileID: 1619896769538484, guid: ae6fcf9e33c2f5244be0782db4b8b3d0,
+      type: 2}
+  - Condom_Object: {fileID: 1929674237260392, guid: 9d51913962af5c641a9a1b90013e0a05,
+      type: 2}
+  - BloodTest_Object: {fileID: 1656491346771884, guid: 4fca92cc152e0a64d8db08d9883990ba,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class STDBall : MonoBehaviour
-{
+public class UnProtectedSex : MonoBehaviour {
+    
 
-    public GameObject STDBall_Object;
+    public static bool MoveStdBullet = false;
 
-    private float STDBallSpeedX=.05f;//speed of ball xaxis
-    private float STDBallSpeedY = .05f;//speed of ball xaxis
+    private float STDBulletSpeedX = .05f;//speed of bullet xaxis
+    private float STDBulletSpeedY = -.05f;//speed of bullet yaxis
 
+    Vector2 PointOutSideScreen = new Vector2 (10,10);
 
     // Use this for initialization
     void Start()
@@ -19,21 +20,23 @@ public class STDBall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (MoveStdBullet == true)
+        {
+            MakeSTDBulletMove();
+        }
+
+
     }
 
-    private void FixedUpdate()
+    void MakeSTDBulletMove()
     {
-        MakeBallMove();
+        float XposSTDBall = transform.position.x + STDBulletSpeedX;
+        float YposSTDBall = transform.position.y + STDBulletSpeedY;
+        transform.position = new Vector2(XposSTDBall, YposSTDBall);
     }
 
-    void MakeBallMove()
-    {
-        float XposSTDBall = STDBall_Object.transform.position.x + STDBallSpeedX;
-        float YposSTDBall = STDBall_Object.transform.position.y + STDBallSpeedY;
-        STDBall_Object.transform.position = new Vector2(XposSTDBall, YposSTDBall);
-    }
-
-    //Ball colitions
+    //Bullet colitions
     private void OnTriggerEnter2D(Collider2D otherCollider)
     {
         Sidelines mySideline = otherCollider.gameObject.GetComponent<Sidelines>();//get the sidelines
@@ -41,36 +44,32 @@ public class STDBall : MonoBehaviour
         BottomLine myBottomline = otherCollider.gameObject.GetComponent<BottomLine>();//get the Bottomline
         PlayerScript myPlayer = otherCollider.gameObject.GetComponent<PlayerScript>();//get the Player
         EnemyScript myEnemy = otherCollider.gameObject.GetComponent<EnemyScript>();//get the STD
-
-        //BigRock BigRockObject = otherCollider.gameObject.GetComponent<BigRock>();
-        //PowerUps PowerUpObject = otherCollider.gameObject.GetComponent<PowerUps>();
+        
 
         //if the collliding object is any sideline
         if (mySideline != null)
         {
-            STDBallSpeedX *= -1;
+            STDBulletSpeedX *= -1;
         }
         //if the collliding object is topline
         else if (myTopLine != null)
         {
-            STDBallSpeedY *= -1;
+            STDBulletSpeedY *= -1;
         }
         //if the collliding object is bottomline
         else if (myBottomline != null)
         {
-            STDBallSpeedY *= -1;
+            transform.position = PointOutSideScreen;//bullet disappears
+            MoveStdBullet = false; //StopBulletMovement
         }
         else if (myPlayer != null)
         {
-            STDBallSpeedX *= -1;
-            STDBallSpeedY *= -1;
+            MoveStdBullet = false; //StopBulletMovement
+            Destroy(myPlayer.gameObject);
+            transform.position = PointOutSideScreen;//bullet disappears
+            
         }
-        else if (myEnemy != null)
-        {
-            STDBallSpeedX *= -1;
-            STDBallSpeedY *= -1;
-        }
+
 
     }
-
 }

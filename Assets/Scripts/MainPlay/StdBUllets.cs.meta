@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b64b30c198be439418c13dcb2235c52d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - UnProSex_Object: {fileID: 1972009649585870, guid: 624f34d1a7ce40d4e9fec62c52075cdb,
+      type: 2}
+  - SharpObject_Object: {fileID: 1277828116806682, guid: 53e1142a799937f41bcac9b3bee11817,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

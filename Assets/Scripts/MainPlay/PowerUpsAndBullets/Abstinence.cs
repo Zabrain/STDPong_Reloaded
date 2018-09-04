@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class STDBall : MonoBehaviour
-{
+public class Abstinence : MonoBehaviour {
 
-    public GameObject STDBall_Object;
+    public GameObject Abstinence_Object;
 
-    private float STDBallSpeedX=.05f;//speed of ball xaxis
-    private float STDBallSpeedY = .05f;//speed of ball xaxis
 
+    public static bool MovePowerUp= false;
+
+    private float PowerUpSpeedX= .05f;//speed of bullet xaxis
+    private float PowerUpSpeedY = -.05f;//speed of bullet yaxis
 
     // Use this for initialization
     void Start()
@@ -19,21 +20,23 @@ public class STDBall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (MovePowerUp == true)
+        {
+            MakeSTDBulletMove();
+        }
+
+
     }
 
-    private void FixedUpdate()
+    void MakeSTDBulletMove()
     {
-        MakeBallMove();
+        float XposSTDBall = transform.position.x + PowerUpSpeedX;
+        float YposSTDBall = transform.position.y + PowerUpSpeedY;
+        transform.position = new Vector2(XposSTDBall, YposSTDBall);
     }
 
-    void MakeBallMove()
-    {
-        float XposSTDBall = STDBall_Object.transform.position.x + STDBallSpeedX;
-        float YposSTDBall = STDBall_Object.transform.position.y + STDBallSpeedY;
-        STDBall_Object.transform.position = new Vector2(XposSTDBall, YposSTDBall);
-    }
-
-    //Ball colitions
+    //Bullet colitions
     private void OnTriggerEnter2D(Collider2D otherCollider)
     {
         Sidelines mySideline = otherCollider.gameObject.GetComponent<Sidelines>();//get the sidelines
@@ -48,29 +51,17 @@ public class STDBall : MonoBehaviour
         //if the collliding object is any sideline
         if (mySideline != null)
         {
-            STDBallSpeedX *= -1;
-        }
-        //if the collliding object is topline
-        else if (myTopLine != null)
-        {
-            STDBallSpeedY *= -1;
+            PowerUpSpeedX *= -1;
         }
         //if the collliding object is bottomline
         else if (myBottomline != null)
         {
-            STDBallSpeedY *= -1;
+            PowerUpSpeedY *= -1;
         }
         else if (myPlayer != null)
         {
-            STDBallSpeedX *= -1;
-            STDBallSpeedY *= -1;
         }
-        else if (myEnemy != null)
-        {
-            STDBallSpeedX *= -1;
-            STDBallSpeedY *= -1;
-        }
+
 
     }
-
 }

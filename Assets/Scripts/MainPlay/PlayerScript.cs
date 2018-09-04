@@ -9,13 +9,14 @@ public class PlayerScript : MonoBehaviour {
 
     public GameObject myPlayer;
 
+    Vector2 myScreen;
 
-                          // Use this for initialization
+    // Use this for initialization
     void Start () {
 
-
-        Debug.Log(myPlayer.transform.position.x);
-        Debug.Log(myPlayer.transform.position.x);
+        //full screen dimension
+        myScreen = new Vector2(Screen.width, Screen.height);
+        myScreen = Camera.main.ScreenToWorldPoint(myScreen);
 
     }
 	
@@ -23,6 +24,24 @@ public class PlayerScript : MonoBehaviour {
 	void Update () {
 
         PlayerControl();//controls player movement
+        KeyBoardControl();//for keyboard controls
+    }
+
+
+    //Player Collisions
+    private void OnTriggerEnter2D(Collider2D otherCollider)
+    {
+        PlayerScript myPlayer = otherCollider.gameObject.GetComponent<PlayerScript>();//get the Player
+        StdBUllets mySTDBall = otherCollider.gameObject.GetComponent<StdBUllets>();//get the Player
+                                                                                   //EnemyScript myEnemy = otherCollider.gameObject.GetComponent<EnemyScript>();//get the STD
+
+
+        //if the collliding object is any sideline
+        //if (mySTDBall.gameObject != StdBUllets.UnProSex_Object)
+        //{
+        //    Destroy(myPlayer);
+        //}
+
 
     }
 
@@ -53,4 +72,22 @@ public class PlayerScript : MonoBehaviour {
     }
 
 
+    void KeyBoardControl()
+    {
+        //for dirrection buttons///////////////////////////////
+        if (Input.GetKey(KeyCode.A))
+        {
+            myPlayer.transform.Translate(Vector2.left * 5 * 2 * Time.deltaTime); //make is move smooth
+            myPlayer.transform.position = new Vector2(Mathf.Clamp(myPlayer.transform.position.x, -myScreen.x, myScreen.x), myPlayer.transform.position.y);//ensure it stays on screen
+            
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            myPlayer.transform.Translate(Vector2.right * 5 * 2 * Time.deltaTime);
+            myPlayer.transform.position = new Vector2(Mathf.Clamp(myPlayer.transform.position.x, -myScreen.x, myScreen.x), myPlayer.transform.position.y);//ensure it stays on screen
+
+        }
+    }
+
+    
 }
