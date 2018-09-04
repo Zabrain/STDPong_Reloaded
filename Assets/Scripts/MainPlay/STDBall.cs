@@ -53,12 +53,15 @@ public class STDBall : MonoBehaviour
         //if the collliding object is topline
         else if (myTopLine != null)
         {
+            StdPongPlayScript.MyEnemyHealth -= .10f;//reduce the enemy health
             STDBallSpeedY *= -1;
         }
         //if the collliding object is bottomline
         else if (myBottomline != null)
         {
+            StdPongPlayScript.MyPlayerHealth -= .10f;//reduce the player health
             STDBallSpeedY *= -1;
+
         }
         else if (myPlayer != null)
         {

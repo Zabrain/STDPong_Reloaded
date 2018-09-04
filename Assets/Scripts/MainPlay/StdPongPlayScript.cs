@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StdPongPlayScript : MonoBehaviour {
 
@@ -29,8 +30,14 @@ public class StdPongPlayScript : MonoBehaviour {
 
     int intLevel = 1;//current level
 
-    int intStdBulletDelayTime = 100;
-    int intStdBulletCountDownTimer = 0;
+    int intStdBulletDelayTime = 100;//delay time before fire
+    int intStdBulletCountDownTimer = 0;//
+
+    public Slider MyPlayerImmuneSlider;
+    public Slider MyEnemyImmuneSlider;
+
+    public static float MyPlayerHealth;
+    public static float MyEnemyHealth;
 
     private void Awake()
     {
@@ -44,6 +51,12 @@ public class StdPongPlayScript : MonoBehaviour {
         CreateSTDBullets(); //instantiate all STD Bullets
 
         intStdBulletDelayTime = 10 * intLevel;//set std bullet delay time
+
+        MyPlayerHealth=1f;
+        MyEnemyHealth=1f;
+
+        MyPlayerImmuneSlider.value = MyPlayerHealth;
+        MyEnemyImmuneSlider.value = MyEnemyHealth;
 
     }
 
@@ -61,10 +74,9 @@ public class StdPongPlayScript : MonoBehaviour {
             FireSTDBullet();
         }
 
-        Debug.Log(intStdBulletCountDownTimer);
-
-        Debug.Log("Bullet " + MySTDBullets[0].transform.position);
-        Debug.Log("Enemy " + TheEnemy.transform.position);
+        //update the immunity bars
+        MyPlayerImmuneSlider.value = MyPlayerHealth;
+        MyEnemyImmuneSlider.value = MyEnemyHealth;
     }
 
     void FireSTDBullet()
