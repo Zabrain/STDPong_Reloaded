@@ -30,8 +30,11 @@ public class StdPongPlayScript : MonoBehaviour {
 
     int intLevel = 1;//current level
 
-    int intStdBulletDelayTime = 100;//delay time before fire
-    int intStdBulletCountDownTimer = 0;//
+    int intStdBulletDelayTime;//delay time before STDBullet fire
+    int intStdBulletCountDownTimer=0;//Countdown to delay time
+
+    int intPowerupDelayTime;//delay time before Powerup appears
+    int intPowerupCountDownTimer =0;//Countdown to delay time
 
     public Slider MyPlayerImmuneSlider;
     public Slider MyEnemyImmuneSlider;
@@ -50,10 +53,11 @@ public class StdPongPlayScript : MonoBehaviour {
         CreatePowerUps(); //instantiate all powerups
         CreateSTDBullets(); //instantiate all STD Bullets
 
-        intStdBulletDelayTime = 10 * intLevel;//set std bullet delay time
+        intStdBulletDelayTime = 500 / intLevel;//set std bullet delay time
+        intPowerupDelayTime = 250 * intLevel; //set powerup delay time
 
-        MyPlayerHealth=1f;
-        MyEnemyHealth=1f;
+        MyPlayerHealth =1f;//initialize player health
+        MyEnemyHealth=1f;//initialize enemy health
 
         MyPlayerImmuneSlider.value = MyPlayerHealth;
         MyEnemyImmuneSlider.value = MyEnemyHealth;
@@ -68,24 +72,81 @@ public class StdPongPlayScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        intStdBulletCountDownTimer += 1; //countdown for std bullet
-        if (intStdBulletCountDownTimer==intStdBulletDelayTime)
-        {
-            FireSTDBullet();
-        }
+        CheckForFiringBullet(); //starts the std bullet counter and check for delay time
+
 
         //update the immunity bars
-        MyPlayerImmuneSlider.value = MyPlayerHealth;
+        MyPlayerImmuneSlider.value = MyPlayerHealth; //work on this
         MyEnemyImmuneSlider.value = MyEnemyHealth;
+    }
+
+    //The two functions below handles the Powerups fire
+    void CheckForFiringPowerup()
+    {
+        if (UnProtectedSex.MoveStdBullet == false || SharpObject.MoveStdBullet == false) //checks if either of the bullets stopped moving
+        {
+            intStdBulletCountDownTimer += 1; //countdown for std bullet
+        }
+
+        if (intStdBulletCountDownTimer == intStdBulletDelayTime) //checks if delay time elapsed
+        {
+            FirePowerup(); //fire a random bullet
+            intStdBulletCountDownTimer = 0; //reset countdown timer
+        }
+    }
+
+    void FirePowerup()
+    {
+        //pick a random bullet
+        int RandomBulletIndex = Random.Range(0, TheSTDBullets.Length); //exclusive range
+        TheSTDBullets[RandomBulletIndex].transform.position = TheEnemy.transform.position;
+        if (RandomBulletIndex == 0)
+        {
+            UnProtectedSex.MoveStdBullet = true;
+        }
+        else if (RandomBulletIndex == 1)
+        {
+            SharpObject.MoveStdBullet = true;
+        }
+
+        Debug.Log(RandomBulletIndex + " and " + TheSTDBullets.Length);
+
+    }
+    //Powerups fire ends//////////////////////////////
+
+    //The two functions below handles the std bullet firing
+    void CheckForFiringBullet()
+    {
+        if (UnProtectedSex.MoveStdBullet == false || SharpObject.MoveStdBullet == false) //checks if either of the bullets stopped moving
+        {
+            intStdBulletCountDownTimer += 1; //countdown for std bullet
+        }
+
+        if (intStdBulletCountDownTimer == intStdBulletDelayTime) //checks if delay time elapsed
+        {
+            FireSTDBullet(); //fire a random bullet
+            intStdBulletCountDownTimer = 0; //reset countdown timer
+        }
     }
 
     void FireSTDBullet()
     {
-        int RandomBulletIndex = Random.Range(0, TheSTDBullets.Length-1);
+        //pick a random bullet
+        int RandomBulletIndex = Random.Range(0, TheSTDBullets.Length); //exclusive range
+        TheSTDBullets[RandomBulletIndex].transform.position = TheEnemy.transform.position;
+        if (RandomBulletIndex==0)
+        {
+            UnProtectedSex.MoveStdBullet = true;
+        }
+        else if (RandomBulletIndex == 1)
+        {
+            SharpObject.MoveStdBullet = true;
+        }
 
-        TheSTDBullets[0].transform.position = TheEnemy.transform.position;
-        UnProtectedSex.MoveStdBullet = true;
+        Debug.Log(RandomBulletIndex +" and "+ TheSTDBullets.Length);
+
     }
+    //Std bullet firer ends//////////////////////////////
 
     void RenderTheBackground()
     {
@@ -132,8 +193,8 @@ public class StdPongPlayScript : MonoBehaviour {
     void CreatePowerUps() //instantiate all powerups
     {
         ThePowerups[0]=Instantiate(MyPowerups[0], MyPowerupsPosition.position, MyPowerupsPosition.rotation);//place the level's powerups at transform position
-        ThePowerups[1]=Instantiate(MyPowerups[1], MyPowerupsPosition.position*1.2f, MyPowerupsPosition.rotation);//place the level's powerups at transform position
-        ThePowerups[2]=Instantiate(MyPowerups[2], MyPowerupsPosition.position*.7f, MyPowerupsPosition.rotation);//place the level's powerups at transform position
+        ThePowerups[1]=Instantiate(MyPowerups[1], MyPowerupsPosition.position, MyPowerupsPosition.rotation);//place the level's powerups at transform position
+        ThePowerups[2]=Instantiate(MyPowerups[2], MyPowerupsPosition.position, MyPowerupsPosition.rotation);//place the level's powerups at transform position
     }
 
     void CreateSTDBullets() //instantiate all STD Bullets
