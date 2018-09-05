@@ -7,6 +7,8 @@ public class MainDirectorScript : MonoBehaviour {
 
     public static bool boolLeveleStart = false;
 
+    public static string GameMode; //Arcade or Story Mode
+
 	// Use this for initialization
 	void Start () {
 

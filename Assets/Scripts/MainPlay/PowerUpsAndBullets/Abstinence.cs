@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Abstinence : MonoBehaviour {
 
-    public GameObject Abstinence_Object;
 
+    Vector2 PointOutSideScreen = new Vector2(10, 10);
 
     public static bool MovePowerUp= false;
 
@@ -23,13 +23,13 @@ public class Abstinence : MonoBehaviour {
 
         if (MovePowerUp == true)
         {
-            MakeSTDBulletMove();
+            MakePoweupMove();
         }
 
 
     }
 
-    void MakeSTDBulletMove()
+    void MakePoweupMove()
     {
         float XposSTDBall = transform.position.x + PowerUpSpeedX;
         float YposSTDBall = transform.position.y + PowerUpSpeedY;
@@ -56,10 +56,16 @@ public class Abstinence : MonoBehaviour {
         //if the collliding object is bottomline
         else if (myBottomline != null)
         {
-            PowerUpSpeedY *= -1;
+            transform.position = PointOutSideScreen;//bullet disappears
+            MovePowerUp = false; //StopBulletMovement
         }
         else if (myPlayer != null)
         {
+            MovePowerUp = false; //StopBulletMovement
+            transform.position = PointOutSideScreen;//bullet disappears
+
+            //do action
+
         }
 
 

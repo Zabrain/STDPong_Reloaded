@@ -66,7 +66,8 @@ public class UnProtectedSex : MonoBehaviour {
         {
             MoveStdBullet = false; //StopBulletMovement
             transform.position = PointOutSideScreen;//bullet disappears
-            Destroy(myPlayer.gameObject);
+           
+            //Do Stuff
 
         }
 

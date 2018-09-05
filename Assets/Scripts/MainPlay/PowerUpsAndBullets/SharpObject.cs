@@ -65,7 +65,8 @@ public class SharpObject : MonoBehaviour {
         {
             MoveStdBullet = false; //StopBulletMovement
             transform.position = PointOutSideScreen;//bullet disappears
-            Destroy(myPlayer.gameObject);
+            
+            //do tuff
 
         }
 

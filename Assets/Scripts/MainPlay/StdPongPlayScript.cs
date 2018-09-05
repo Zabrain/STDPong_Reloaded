@@ -73,7 +73,7 @@ public class StdPongPlayScript : MonoBehaviour {
 	void Update () {
 
         CheckForFiringBullet(); //starts the std bullet counter and check for delay time
-
+        CheckForFiringPowerup(); // starts the powerup counter and check for delay time
 
         //update the immunity bars
         MyPlayerImmuneSlider.value = MyPlayerHealth; //work on this
@@ -83,33 +83,37 @@ public class StdPongPlayScript : MonoBehaviour {
     //The two functions below handles the Powerups fire
     void CheckForFiringPowerup()
     {
-        if (UnProtectedSex.MoveStdBullet == false || SharpObject.MoveStdBullet == false) //checks if either of the bullets stopped moving
+        if (Abstinence.MovePowerUp == false || BloodTest.MovePowerUp == false || Condom.MovePowerUp == false) //checks if either of the bullets stopped moving
         {
-            intStdBulletCountDownTimer += 1; //countdown for std bullet
+            intPowerupCountDownTimer += 1; //countdown for std bullet
         }
 
-        if (intStdBulletCountDownTimer == intStdBulletDelayTime) //checks if delay time elapsed
+        if (intPowerupCountDownTimer == intPowerupDelayTime) //checks if delay time elapsed
         {
             FirePowerup(); //fire a random bullet
-            intStdBulletCountDownTimer = 0; //reset countdown timer
+            intPowerupCountDownTimer = 0; //reset countdown timer
         }
     }
 
     void FirePowerup()
     {
-        //pick a random bullet
-        int RandomBulletIndex = Random.Range(0, TheSTDBullets.Length); //exclusive range
-        TheSTDBullets[RandomBulletIndex].transform.position = TheEnemy.transform.position;
+        //pick a random Powerup
+        int RandomBulletIndex = Random.Range(0, ThePowerups.Length); //exclusive range
+        ThePowerups[RandomBulletIndex].transform.position = new Vector2(Random.Range(-4, 4), TheEnemy.transform.position.y);
         if (RandomBulletIndex == 0)
         {
-            UnProtectedSex.MoveStdBullet = true;
+            Abstinence.MovePowerUp = true;
         }
         else if (RandomBulletIndex == 1)
         {
-            SharpObject.MoveStdBullet = true;
+            BloodTest.MovePowerUp = true;
+        }
+        else if (RandomBulletIndex == 2)
+        {
+            Condom.MovePowerUp = true;
         }
 
-        Debug.Log(RandomBulletIndex + " and " + TheSTDBullets.Length);
+        //Debug.Log(RandomBulletIndex + " and " + TheSTDBullets.Length);
 
     }
     //Powerups fire ends//////////////////////////////
