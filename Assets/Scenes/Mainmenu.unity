@@ -3008,6 +3008,7 @@ GameObject:
   - component: {fileID: 1188523324}
   - component: {fileID: 1188523323}
   - component: {fileID: 1188523326}
+  - component: {fileID: 1188523327}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3095,6 +3096,17 @@ MonoBehaviour:
   myMusicSlider: {fileID: 2051306776}
   mySFXSlider: {fileID: 990807982}
   stageName: MainMenu
+--- !u!114 &1188523327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1188523322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3e4b445f8d27fd45a85cfb2bfec089e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1210977316
 GameObject:
   m_ObjectHideFlags: 0
