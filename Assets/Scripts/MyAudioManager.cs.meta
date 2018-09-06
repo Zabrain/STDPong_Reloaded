@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: dafaca593b28a2745b4f2c2b33ef3c8c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - MainThemeMusic: {fileID: 82057081867752568, guid: bd8d8c9fffab70f41bb95ddca5a478c5,
+      type: 2}
+  - ClickButtonSFX: {fileID: 82015161884680566, guid: 1f5fb18894d91ae4dbde4c43a704655b,
+      type: 2}
+  - LoseSoundSFX: {fileID: 82798375446190340, guid: 3d464eb06adbe7b4085a35858a192777,
+      type: 2}
+  - myMusicSlider: {instanceID: 0}
+  - mySFXSlider: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

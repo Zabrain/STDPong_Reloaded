@@ -444,6 +444,7 @@ GameObject:
   - component: {fileID: 185082688}
   - component: {fileID: 185082691}
   - component: {fileID: 185082692}
+  - component: {fileID: 185082693}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -562,6 +563,23 @@ MonoBehaviour:
   - {fileID: 1277828116806682, guid: 53e1142a799937f41bcac9b3bee11817, type: 2}
   MyPlayerImmuneSlider: {fileID: 866708064}
   MyEnemyImmuneSlider: {fileID: 999879897}
+--- !u!114 &185082693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 185082687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dafaca593b28a2745b4f2c2b33ef3c8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainThemeMusic: {fileID: 0}
+  ClickButtonSFX: {fileID: 0}
+  LoseSoundSFX: {fileID: 0}
+  myMusicSlider: {fileID: 0}
+  mySFXSlider: {fileID: 0}
+  stageName: 
 --- !u!1 &206512882
 GameObject:
   m_ObjectHideFlags: 0
