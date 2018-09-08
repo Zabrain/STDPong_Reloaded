@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StdPongPlay.unity
     guid: 5e5dd9f8b93e6d24f93ad34007acb6b0
+  - enabled: 1
+    path: Assets/Scenes/STDScroll.unity
+    guid: a646ed9aeff361540a6cd1df03261eb3
+  - enabled: 1
+    path: Assets/Scenes/QuizGame.unity
+    guid: d7d961fcea003ac42879631506d585e0
   m_configObjects: {}

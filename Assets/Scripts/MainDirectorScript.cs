@@ -9,7 +9,10 @@ public class MainDirectorScript : MonoBehaviour {
 
     public static string GameMode; //Arcade or Story Mode
 
-    int intLevel;
+    public static int intLevel;
+    public static string strLevel;
+
+    public static string[] LevelNames=new string[2] { "Zero", "Scabies" };
 
     // Use this for initialization
     void Start () {
@@ -25,8 +28,10 @@ public class MainDirectorScript : MonoBehaviour {
             PlayerPrefs.SetInt("PlayedBefore",1); //make played
         }
 
+        intLevel = PlayerPrefs.GetInt("CurrentLevel");//get the current level
 
-          
+        strLevel = LevelNames[intLevel];
+
 
     }
 	
