@@ -103,16 +103,6 @@ public class StdScroll : MonoBehaviour {
             SymptomsDetail.text = "Small bumps or rashes appearing in dirty-looking, small curling lines especially on the penis, breasts, the buttocks, thighs, around the belly button, wrists and in between the fingers."; //symptoms
             TreatmentDetail.text = "Medications such as Nix, Elimite, or Scabene.";
             TestDetail.text = "Your health care provider can examine a scraping from your skin with a microscope to see if you have scabies. Sometimes a biopsy, or skin sample, may be necessary";
-            //QuizQuestions[0, 0] = "What a Gwan?";
-            //QuizQuestions[0, 1] = "No";
-            //QuizQuestions[1, 0] = "What 2 Gwan?";
-            //QuizQuestions[1, 1] = "Yes";
-            //QuizQuestions[2, 0] = "What 3 Gwan?";
-            //QuizQuestions[2, 1] = "No";
-            //QuizQuestions[3, 0] = "What 4 Gwan?";
-            //QuizQuestions[3, 1] = "No";
-            //QuizQuestions[4, 0] = "What 5 Gwan?";
-            //QuizQuestions[4, 1] = "Yes";
         }
     }
 
