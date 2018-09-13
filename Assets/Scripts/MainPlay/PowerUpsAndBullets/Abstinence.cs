@@ -65,6 +65,8 @@ public class Abstinence : MonoBehaviour {
             transform.position = PointOutSideScreen;//bullet disappears
 
             //do action
+            StdPongPlayScript.MyPlayerHealth += 0.20f;//increace player immune by 5%
+            StdPongPlayScript.intCurrentPlayerScore += 5; //reduce player points 
 
         }
 

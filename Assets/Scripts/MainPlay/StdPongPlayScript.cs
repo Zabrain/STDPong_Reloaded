@@ -2,13 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class StdPongPlayScript : MonoBehaviour {
-
+    
     public GameObject BackgroundObject; //the object that holds the background sprites
 
     public Sprite[] BackgroundSprite; //arrays of all the background sprites
-    
+
+    public TextMeshProUGUI CurrentPlayerScore;
+    public static int intCurrentPlayerScore; //the player score holder
+    int lastScore=0;
+
     public Transform MyEnemyPosition;
     public Transform MyPlayerPosition;
     public Transform MySTDBallPosition;
@@ -42,6 +48,7 @@ public class StdPongPlayScript : MonoBehaviour {
     public static float MyPlayerHealth;
     public static float MyEnemyHealth;
 
+
     private void Awake()
     {
         RenderTheBackground();//creates the background
@@ -62,6 +69,7 @@ public class StdPongPlayScript : MonoBehaviour {
         MyPlayerImmuneSlider.value = MyPlayerHealth;
         MyEnemyImmuneSlider.value = MyEnemyHealth;
 
+        intCurrentPlayerScore = PlayerPrefs.GetInt("CurrentScore"); //get current player score
     }
 
     // Use this for initialization
@@ -78,6 +86,34 @@ public class StdPongPlayScript : MonoBehaviour {
         //update the immunity bars
         MyPlayerImmuneSlider.value = MyPlayerHealth; //work on this
         MyEnemyImmuneSlider.value = MyEnemyHealth;
+
+        UpdateScores(); //updates the score
+
+        PlayerLoses(); //when lost
+    }
+
+    void UpdateScores()
+    {
+        //update score
+        if (intCurrentPlayerScore < 0)
+        {
+            intCurrentPlayerScore = 0;
+            CurrentPlayerScore.text = intCurrentPlayerScore.ToString();
+        }
+        else
+        {
+            if (lastScore > intCurrentPlayerScore)
+            {
+                lastScore -= 1;
+                CurrentPlayerScore.text = lastScore.ToString();
+
+            }
+            else if (lastScore < intCurrentPlayerScore)
+            {
+                lastScore += 1;
+                CurrentPlayerScore.text = lastScore.ToString();
+            }
+        }
     }
 
     //The two functions below handles the Powerups fire
@@ -152,6 +188,15 @@ public class StdPongPlayScript : MonoBehaviour {
     }
     //Std bullet firer ends//////////////////////////////
 
+    //when players loses
+    void PlayerLoses()
+    {
+        if (MyPlayerHealth <= 0f)
+        {
+            SceneManager.LoadScene("LossScene");
+        }
+    }
+
     void RenderTheBackground()
     {
         SpriteRenderer spriteRenderer = BackgroundObject.GetComponent<SpriteRenderer>(); //grab the background's sprite renderer
@@ -186,7 +231,17 @@ public class StdPongPlayScript : MonoBehaviour {
 
     void PlayerPicker()
     {
-        ThePlayer=Instantiate(MyPlayer[1], MyPlayerPosition.position, MyPlayerPosition.rotation);//place the selected player at transform position 
+        int PlayerIndex = 1;
+        if (PlayerPrefs.GetString("SelectedPlayer")=="Obi")
+        {
+            PlayerIndex = 0;
+        }
+        else if (PlayerPrefs.GetString("SelectedPlayer") == "Ada")
+        {
+            PlayerIndex = 1;
+        }
+
+        ThePlayer =Instantiate(MyPlayer[PlayerIndex], MyPlayerPosition.position, MyPlayerPosition.rotation);//place the selected player at transform position 
     }
 
     void STDBallPicker()
@@ -206,6 +261,7 @@ public class StdPongPlayScript : MonoBehaviour {
         TheSTDBullets[0] = Instantiate(MySTDBullets[0], MySTDBulletsPosition.position, MySTDBulletsPosition.rotation);//place the level's std bullets at transform position
         TheSTDBullets[1]= Instantiate(MySTDBullets[1], MySTDBulletsPosition.position, MySTDBulletsPosition.rotation);//place the level's std bullets at transform position
     }
+
 
    
 }

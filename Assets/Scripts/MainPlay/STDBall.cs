@@ -23,6 +23,9 @@ public class STDBall : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
+        STDBallSpeedX *= 1.002f;
+        STDBallSpeedY *= 1.002f;
         MakeBallMove();
     }
 
@@ -55,6 +58,8 @@ public class STDBall : MonoBehaviour
         {
             StdPongPlayScript.MyEnemyHealth -= .10f;//reduce the enemy health
             STDBallSpeedY *= -1;
+
+            StdPongPlayScript.intCurrentPlayerScore += 10; //increase player points 
         }
         //if the collliding object is bottomline
         else if (myBottomline != null)
@@ -62,11 +67,18 @@ public class STDBall : MonoBehaviour
             StdPongPlayScript.MyPlayerHealth -= .10f;//reduce the player health
             STDBallSpeedY *= -1;
 
+            StdPongPlayScript.intCurrentPlayerScore -= 5; //reduce player points 
+
         }
         else if (myPlayer != null)
         {
+
             STDBallSpeedX *= -1;
             STDBallSpeedY *= -1;
+
+            STDBallSpeedX *= 1.05f;
+            STDBallSpeedY *= 1.05f;
+
         }
         else if (myEnemy != null)
         {

@@ -62,7 +62,8 @@ public class Condom : MonoBehaviour {
         {
             MovePowerUp = false; //StopBulletMovement
             transform.position = PointOutSideScreen;//bullet disappears
-
+            myPlayer.transform.localScale = new Vector2( PlayerScript.PlayerObjectSize.x * 2f, PlayerScript.PlayerObjectSize.y * 2f);//increase player size by 100%
+            PlayerScript.SharpCondomsPlayerSizeCounter = 1;//initiate the playersize counter
             //do stuff
 
         }

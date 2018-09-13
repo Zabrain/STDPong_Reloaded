@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 
 public class StdScroll : MonoBehaviour {
+    
 
     public TextMeshProUGUI PageHeaderSTD;
 
@@ -137,6 +138,9 @@ public class StdScroll : MonoBehaviour {
 
     public void Continue_CLick()
     {
-        SceneManager.LoadScene("QuizGame");
+        if (PlayerPrefs.GetString("STDScrollFrom") == "StoryMode")
+        {
+            SceneManager.LoadScene("QuizGame");
+        }
     }
 }

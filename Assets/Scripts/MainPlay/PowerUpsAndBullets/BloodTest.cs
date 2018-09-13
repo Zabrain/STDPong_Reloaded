@@ -65,6 +65,8 @@ public class BloodTest : MonoBehaviour {
             transform.position = PointOutSideScreen;//bullet disappears
 
             //do stuff
+            StdPongPlayScript.MyPlayerHealth += 0.05f;//increace player immune by 5%
+            StdPongPlayScript.intCurrentPlayerScore += 3; //reduce player points 
 
         }
 

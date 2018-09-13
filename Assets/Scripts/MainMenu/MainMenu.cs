@@ -17,7 +17,7 @@ public class MainMenu : MonoBehaviour {
 
     public void StoryMode()
     {
-        SceneManager.LoadScene("StdPongPlay");
+        SceneManager.LoadScene("StartingAnimation");
     }
 
     public void ArcadeMode()

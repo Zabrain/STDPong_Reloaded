@@ -66,8 +66,9 @@ public class UnProtectedSex : MonoBehaviour {
         {
             MoveStdBullet = false; //StopBulletMovement
             transform.position = PointOutSideScreen;//bullet disappears
-           
-            //Do Stuff
+
+            StdPongPlayScript.MyPlayerHealth -= 0.2f;//reduce player immune by 20%
+            StdPongPlayScript.intCurrentPlayerScore -= 5; //reduce player points 
 
         }
 

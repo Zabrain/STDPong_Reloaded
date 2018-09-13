@@ -11,6 +11,10 @@ public class PlayerScript : MonoBehaviour {
 
     Vector2 myScreen;
 
+    public static int SharpCondomsPlayerSizeCounter;
+
+    public static Vector2 PlayerObjectSize;
+
     // Use this for initialization
     void Start () {
 
@@ -18,6 +22,8 @@ public class PlayerScript : MonoBehaviour {
         myScreen = new Vector2(Screen.width, Screen.height);
         myScreen = Camera.main.ScreenToWorldPoint(myScreen);
 
+        //store player object size
+        PlayerObjectSize = myPlayer.transform.localScale;
     }
 	
 	// Update is called once per frame
@@ -25,6 +31,18 @@ public class PlayerScript : MonoBehaviour {
 
         PlayerControl();//controls player movement
         KeyBoardControl();//for keyboard controls
+
+        //checks for player size as a result of powerup
+        if (SharpCondomsPlayerSizeCounter > 0)
+        {
+            SharpCondomsPlayerSizeCounter += 1;
+        }
+        if (SharpCondomsPlayerSizeCounter > 200)
+        {
+            myPlayer.transform.localScale = new Vector2(PlayerObjectSize.x, PlayerObjectSize.y );//reduce player size to normal size       
+            SharpCondomsPlayerSizeCounter = 0;
+
+        }
     }
 
 
@@ -33,7 +51,7 @@ public class PlayerScript : MonoBehaviour {
     {
         PlayerScript myPlayer = otherCollider.gameObject.GetComponent<PlayerScript>();//get the Player
         StdBUllets mySTDBall = otherCollider.gameObject.GetComponent<StdBUllets>();//get the Player
-                                                                                   //EnemyScript myEnemy = otherCollider.gameObject.GetComponent<EnemyScript>();//get the STD
+        //EnemyScript myEnemy = otherCollider.gameObject.GetComponent<EnemyScript>();//get the STD
 
 
         //if the collliding object is any sideline

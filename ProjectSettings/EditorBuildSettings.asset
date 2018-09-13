@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Mainmenu.unity
     guid: c100469dc35ea97499d0dcb2c87d8d47
   - enabled: 1
+    path: Assets/Scenes/StartingAnimation.unity
+    guid: 6e7c01338960f8043a6a737a21f96bb2
+  - enabled: 1
     path: Assets/Scenes/StdPongPlay.unity
     guid: 5e5dd9f8b93e6d24f93ad34007acb6b0
   - enabled: 1
@@ -17,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/QuizGame.unity
     guid: d7d961fcea003ac42879631506d585e0
+  - enabled: 1
+    path: Assets/Scenes/LossScene.unity
+    guid: 6ec3e362626d82242aa642910485deed
+  - enabled: 1
+    path: Assets/Scenes/Leaderboards.unity
+    guid: 7c97a1eb510890b4f8e2760a62fad0d9
   m_configObjects: {}

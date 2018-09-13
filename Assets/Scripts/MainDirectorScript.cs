@@ -23,6 +23,11 @@ public class MainDirectorScript : MonoBehaviour {
             //add all playerprefs to instantiate
             PlayerPrefs.SetInt("CurrentLevel",1);
 
+            PlayerPrefs.SetInt("CurrentScore", 0);//player score
+
+            PlayerPrefs.SetString("SelectedPlayer", "Obi");//Player Selected (Ada or Obi)
+
+            PlayerPrefs.SetString("STDScrollFrom", "StoryMode");//This identifies where an STD scroll is being opened from 
             //end all playerprefs to instantiate
 
             PlayerPrefs.SetInt("PlayedBefore",1); //make played
@@ -37,8 +42,11 @@ public class MainDirectorScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+
+        
+
+
+    }
 
 
 }

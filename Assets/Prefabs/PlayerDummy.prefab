@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212231568893428282}
   - component: {fileID: 60717256563263534}
   - component: {fileID: 50503059888949966}
-  - component: {fileID: 114357150463759296}
+  - component: {fileID: 114133108051631524}
   m_Layer: 0
   m_Name: PlayerDummy
   m_TagString: Untagged
@@ -104,7 +104,7 @@ PolygonCollider2D:
       - {x: 0.19999999, y: -0.315}
       - {x: 0.22999999, y: -0.114999995}
       - {x: 0.14, y: -0.015}
---- !u!114 &114357150463759296
+--- !u!114 &114133108051631524
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}

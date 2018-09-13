@@ -65,9 +65,11 @@ public class SharpObject : MonoBehaviour {
         {
             MoveStdBullet = false; //StopBulletMovement
             transform.position = PointOutSideScreen;//bullet disappears
-            
-            //do tuff
 
+            //do stuff
+            myPlayer.transform.localScale = new Vector2(PlayerScript.PlayerObjectSize.x / 2f, PlayerScript.PlayerObjectSize.y / 2f);//reduce player size by 50%
+            PlayerScript.SharpCondomsPlayerSizeCounter = 1;//initiate the playersize counter
+            StdPongPlayScript.intCurrentPlayerScore -= 3; //reduce player points 
         }
 
 
