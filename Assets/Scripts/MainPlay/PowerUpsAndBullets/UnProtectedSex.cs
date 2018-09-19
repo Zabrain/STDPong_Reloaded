@@ -21,11 +21,13 @@ public class UnProtectedSex : MonoBehaviour {
     void Update()
     {
 
-        if (MoveStdBullet == true)
+        if (MainDirectorScript.IsGamePaused == false && MainDirectorScript.boolLeveleStart == true)
         {
-            MakeSTDBulletMove();
-        }
-
+            if (MoveStdBullet == true)
+            {
+                MakeSTDBulletMove();
+            }
+        }   
 
     }
 
@@ -34,13 +36,16 @@ public class UnProtectedSex : MonoBehaviour {
         float XposSTDBall = transform.position.x + STDBulletSpeedX;
         float YposSTDBall = transform.position.y + STDBulletSpeedY;
         transform.position = new Vector2(XposSTDBall, YposSTDBall);
+
+        Vector2 STDBulletSize = StdPongPlayScript.STDBulletsText[0].transform.localScale;//size of powerup
+        StdPongPlayScript.STDBulletsText[0].transform.position = new Vector2(XposSTDBall + STDBulletSize.x, YposSTDBall); //transform Unprosex blinking text
+
     }
 
     //Bullet colitions
     private void OnTriggerEnter2D(Collider2D otherCollider)
     {
         Sidelines mySideline = otherCollider.gameObject.GetComponent<Sidelines>();//get the sidelines
-        TopLine myTopLine = otherCollider.gameObject.GetComponent<TopLine>();//get the Topline
         BottomLine myBottomline = otherCollider.gameObject.GetComponent<BottomLine>();//get the Bottomline
         PlayerScript myPlayer = otherCollider.gameObject.GetComponent<PlayerScript>();//get the Player
         EnemyScript myEnemy = otherCollider.gameObject.GetComponent<EnemyScript>();//get the STD
@@ -51,16 +56,13 @@ public class UnProtectedSex : MonoBehaviour {
         {
             STDBulletSpeedX *= -1;
         }
-        //if the collliding object is topline
-        else if (myTopLine != null)
-        {
-            STDBulletSpeedY *= -1;
-        }
         //if the collliding object is bottomline
         else if (myBottomline != null)
         {
             transform.position = PointOutSideScreen;//bullet disappears
             MoveStdBullet = false; //StopBulletMovement
+
+            StdPongPlayScript.STDBulletsText[0].transform.position = new Vector2(12, 12); //transform blinking text
         }
         else if (myPlayer != null)
         {
@@ -69,6 +71,8 @@ public class UnProtectedSex : MonoBehaviour {
 
             StdPongPlayScript.MyPlayerHealth -= 0.2f;//reduce player immune by 20%
             StdPongPlayScript.intCurrentPlayerScore -= 5; //reduce player points 
+
+            StdPongPlayScript.STDBulletsText[0].transform.position = new Vector2(12, 12); //transform blinking text
 
         }
 

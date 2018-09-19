@@ -17,11 +17,14 @@ public class MainMenu : MonoBehaviour {
 
     public void StoryMode()
     {
+        PlayerPrefs.SetString("STDScrollFrom", "StoryMode");
         SceneManager.LoadScene("StartingAnimation");
+
     }
 
     public void ArcadeMode()
     {
+        PlayerPrefs.SetString("STDScrollFrom", "ArcadeMode");
         SceneManager.LoadScene("StdPongPlay");
     }
 }

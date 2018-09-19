@@ -5,15 +5,26 @@ using UnityEngine;
 public class STDBall : MonoBehaviour
 {
 
+    Vector2 myScreen;
+
     public GameObject STDBall_Object;
 
-    private float STDBallSpeedX=.05f;//speed of ball xaxis
-    private float STDBallSpeedY = .05f;//speed of ball xaxis
+    Rigidbody2D STDBallRB;
+    Vector2 STDBallVelocity= new Vector2 (4f,4f);
 
-
+    public static GameObject STDBall_Static;
+    
     // Use this for initialization
     void Start()
     {
+        //full screen dimension
+        myScreen = new Vector2(Screen.width, Screen.height);
+        myScreen = Camera.main.ScreenToWorldPoint(myScreen);
+
+        STDBallRB = STDBall_Object.GetComponent<Rigidbody2D>();//get rigid body of ball
+        STDBallRB.velocity = STDBallVelocity;
+
+        STDBall_Static = STDBall_Object;//to be targeted by texts
     }
 
     // Update is called once per frame
@@ -22,18 +33,24 @@ public class STDBall : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {
-        
-        STDBallSpeedX *= 1.002f;
-        STDBallSpeedY *= 1.002f;
-        MakeBallMove();
+    { 
+
+        if (MainDirectorScript.IsGamePaused == false && MainDirectorScript.boolLeveleStart == true)
+        {
+            STDBallRB.velocity = STDBallVelocity;
+            //STDBall_Object.transform.rotation = Quaternion.LookRotation(STDBallRB.velocity);
+        }
+        else
+        {
+            STDBallRB.velocity = Vector2.zero;
+        }
+            
     }
 
     void MakeBallMove()
     {
-        float XposSTDBall = STDBall_Object.transform.position.x + STDBallSpeedX;
-        float YposSTDBall = STDBall_Object.transform.position.y + STDBallSpeedY;
-        STDBall_Object.transform.position = new Vector2(XposSTDBall, YposSTDBall);
+        
+
     }
 
     //Ball colitions
@@ -44,46 +61,71 @@ public class STDBall : MonoBehaviour
         BottomLine myBottomline = otherCollider.gameObject.GetComponent<BottomLine>();//get the Bottomline
         PlayerScript myPlayer = otherCollider.gameObject.GetComponent<PlayerScript>();//get the Player
         EnemyScript myEnemy = otherCollider.gameObject.GetComponent<EnemyScript>();//get the STD
-
-        //BigRock BigRockObject = otherCollider.gameObject.GetComponent<BigRock>();
-        //PowerUps PowerUpObject = otherCollider.gameObject.GetComponent<PowerUps>();
+        
 
         //if the collliding object is any sideline
         if (mySideline != null)
         {
-            STDBallSpeedX *= -1;
+            STDBallVelocity = new Vector2(STDBallVelocity.x * -1, STDBallVelocity.y);
+            STDBallRB.velocity = STDBallVelocity;
+            //STDBallSpeedX *= -1;
         }
         //if the collliding object is topline
         else if (myTopLine != null)
         {
+            STDBallVelocity = new Vector2(STDBallVelocity.x, STDBallVelocity.y * -1);
+            STDBallRB.velocity = STDBallVelocity;
+
             StdPongPlayScript.MyEnemyHealth -= .10f;//reduce the enemy health
-            STDBallSpeedY *= -1;
 
             StdPongPlayScript.intCurrentPlayerScore += 10; //increase player points 
         }
         //if the collliding object is bottomline
         else if (myBottomline != null)
         {
-            StdPongPlayScript.MyPlayerHealth -= .10f;//reduce the player health
-            STDBallSpeedY *= -1;
+            STDBallVelocity = new Vector2(STDBallVelocity.x, STDBallVelocity.y * -1);
+            STDBallRB.velocity = STDBallVelocity;
+            
+
+            StdPongPlayScript.MyPlayerHealth -= .05f;//reduce the player health
 
             StdPongPlayScript.intCurrentPlayerScore -= 5; //reduce player points 
 
         }
         else if (myPlayer != null)
-        {
+        { 
+            int RandomDirection = Random.Range(1, 3);
+            int RandomSlantX = Random.Range(3, 8);
+            int RandomSlantY = Random.Range(3, 8);
 
-            STDBallSpeedX *= -1;
-            STDBallSpeedY *= -1;
+            if (RandomDirection == 1)
+            {
+                STDBallVelocity = new Vector2(RandomSlantX * -1f, RandomSlantY * 1f);
+            }
+            else
+            {
+                STDBallVelocity = new Vector2(RandomSlantX*1f, RandomSlantY * 1f);
+            }
 
-            STDBallSpeedX *= 1.05f;
-            STDBallSpeedY *= 1.05f;
+            STDBallRB.velocity = STDBallVelocity;
 
         }
         else if (myEnemy != null)
         {
-            STDBallSpeedX *= -1;
-            STDBallSpeedY *= -1;
+            int RandomDirection = Random.Range(1, 3);
+            int RandomSlantX = Random.Range(3, 8);
+            int RandomSlantY = Random.Range(3, 8);
+
+            if (RandomDirection == 1)
+            {
+                STDBallVelocity = new Vector2(RandomSlantX * -1f, RandomSlantY * -1f);
+            }
+            else
+            {
+                STDBallVelocity = new Vector2(RandomSlantX*1f, RandomSlantY * -1f);
+            }
+
+            STDBallRB.velocity = STDBallVelocity;
         }
 
     }

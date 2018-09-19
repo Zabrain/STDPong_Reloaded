@@ -21,11 +21,14 @@ public class StdPongPlayScript : MonoBehaviour {
     public Transform MyPowerupsPosition;
     public Transform MySTDBulletsPosition;
 
+    //holders from design
     public GameObject[] MyPlayer;//array of player objects
     public GameObject[] MyEnemies;//array of Enemy objects
     public GameObject[] MySTDBall;//array of STDBall objects
     public GameObject[] MyPowerups;//array of PowerUp objects
     public GameObject[] MySTDBullets;//array of STDBullet objects
+    public GameObject[] MyPowerupsText;//array of PowerUp objects text
+    public GameObject[] MySTDBulletsText;//array of STDBullet objects text
 
     //the actual objects
     GameObject ThePlayer;
@@ -33,6 +36,8 @@ public class StdPongPlayScript : MonoBehaviour {
     GameObject TheSTDBall;
     GameObject[] ThePowerups = new GameObject[3];//array of PowerUp objects
     GameObject[] TheSTDBullets = new GameObject[2];
+    public static GameObject[] PowerupsText = new GameObject[3];//array of PowerUp objects text
+    public static GameObject[] STDBulletsText = new GameObject[2];//array of STDBullet objects text
 
     int intLevel = 1;//current level
 
@@ -48,6 +53,7 @@ public class StdPongPlayScript : MonoBehaviour {
     public static float MyPlayerHealth;
     public static float MyEnemyHealth;
 
+    public GameObject WinPanel_Object; //the panel the pops up when player wins pong play
 
     private void Awake()
     {
@@ -80,16 +86,35 @@ public class StdPongPlayScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        CheckForFiringBullet(); //starts the std bullet counter and check for delay time
-        CheckForFiringPowerup(); // starts the powerup counter and check for delay time
+        if (MainDirectorScript.IsGamePaused == false && MainDirectorScript.boolLeveleStart == true)
+        {
+            CheckForFiringBullet(); //starts the std bullet counter and check for delay time
+            CheckForFiringPowerup(); // starts the powerup counter and check for delay time
 
-        //update the immunity bars
-        MyPlayerImmuneSlider.value = MyPlayerHealth; //work on this
-        MyEnemyImmuneSlider.value = MyEnemyHealth;
+            RegulatePlayerHealth();//make the health no exceed 1 or decrease below 0
 
-        UpdateScores(); //updates the score
+            //update the immunity bars
+            MyPlayerImmuneSlider.value = MyPlayerHealth; //work on this
+            MyEnemyImmuneSlider.value = MyEnemyHealth;
 
-        PlayerLoses(); //when lost
+            UpdateScores(); //updates the score
+
+            PlayerLoses(); //when lost
+            CPULoses();//When win
+        }
+        
+    }
+
+    void RegulatePlayerHealth()
+    {
+        if (MyPlayerHealth>1)
+        {
+            MyPlayerHealth = 1;
+        }
+        else if (MyPlayerHealth <0)
+        {
+            MyPlayerHealth = 0;
+        }
     }
 
     void UpdateScores()
@@ -135,7 +160,7 @@ public class StdPongPlayScript : MonoBehaviour {
     {
         //pick a random Powerup
         int RandomBulletIndex = Random.Range(0, ThePowerups.Length); //exclusive range
-        ThePowerups[RandomBulletIndex].transform.position = new Vector2(Random.Range(-4, 4), TheEnemy.transform.position.y);
+        ThePowerups[RandomBulletIndex].transform.position = new Vector2(Random.Range(-2.5f, 2.5f), TheEnemy.transform.position.y+1f);
         if (RandomBulletIndex == 0)
         {
             Abstinence.MovePowerUp = true;
@@ -148,8 +173,7 @@ public class StdPongPlayScript : MonoBehaviour {
         {
             Condom.MovePowerUp = true;
         }
-
-        //Debug.Log(RandomBulletIndex + " and " + TheSTDBullets.Length);
+        
 
     }
     //Powerups fire ends//////////////////////////////
@@ -182,8 +206,7 @@ public class StdPongPlayScript : MonoBehaviour {
         {
             SharpObject.MoveStdBullet = true;
         }
-
-        Debug.Log(RandomBulletIndex +" and "+ TheSTDBullets.Length);
+        
 
     }
     //Std bullet firer ends//////////////////////////////
@@ -193,8 +216,31 @@ public class StdPongPlayScript : MonoBehaviour {
     {
         if (MyPlayerHealth <= 0f)
         {
+            MainDirectorScript.IsGamePaused = true;//pause the game
+            WinPanel_Object.SetActive(true);//open win panel
             SceneManager.LoadScene("LossScene");
         }
+    }
+
+    void GotoLossScene()
+    {
+        SceneManager.LoadScene("LossScene");
+    }
+
+
+    //when CPU loses
+    void CPULoses()
+    {
+        if (MyEnemyHealth <= 0f)
+        {           
+            MainDirectorScript.IsGamePaused = true;//pause the game
+            WinPanel_Object.SetActive(true);//open win panel
+        }
+    }
+    
+    public void GotoSTDScroll()
+    {
+        SceneManager.LoadScene("STDScroll");
     }
 
     void RenderTheBackground()
@@ -254,14 +300,21 @@ public class StdPongPlayScript : MonoBehaviour {
         ThePowerups[0]=Instantiate(MyPowerups[0], MyPowerupsPosition.position, MyPowerupsPosition.rotation);//place the level's powerups at transform position
         ThePowerups[1]=Instantiate(MyPowerups[1], MyPowerupsPosition.position, MyPowerupsPosition.rotation);//place the level's powerups at transform position
         ThePowerups[2]=Instantiate(MyPowerups[2], MyPowerupsPosition.position, MyPowerupsPosition.rotation);//place the level's powerups at transform position
+
+        PowerupsText[0] = Instantiate(MyPowerupsText[0], MyPowerupsPosition.position, MyPowerupsPosition.rotation);
+        PowerupsText[1] = Instantiate(MyPowerupsText[1], MyPowerupsPosition.position, MyPowerupsPosition.rotation);
+        PowerupsText[2] = Instantiate(MyPowerupsText[2], MyPowerupsPosition.position, MyPowerupsPosition.rotation);
     }
 
     void CreateSTDBullets() //instantiate all STD Bullets
     {
         TheSTDBullets[0] = Instantiate(MySTDBullets[0], MySTDBulletsPosition.position, MySTDBulletsPosition.rotation);//place the level's std bullets at transform position
         TheSTDBullets[1]= Instantiate(MySTDBullets[1], MySTDBulletsPosition.position, MySTDBulletsPosition.rotation);//place the level's std bullets at transform position
+
+        STDBulletsText[0] = Instantiate(MySTDBulletsText[0], MySTDBulletsPosition.position, MySTDBulletsPosition.rotation);
+        STDBulletsText[1] = Instantiate(MySTDBulletsText[1], MySTDBulletsPosition.position, MySTDBulletsPosition.rotation);
+
     }
 
-
-   
+    
 }

@@ -20,11 +20,13 @@ public class BloodTest : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
-        if (MovePowerUp == true)
+        if (MainDirectorScript.IsGamePaused == false && MainDirectorScript.boolLeveleStart == true)
         {
-            MakePoweupMove();
-        }
+            if (MovePowerUp == true)
+            {
+                MakePoweupMove();
+            }
+        }         
 
 
     }
@@ -34,13 +36,16 @@ public class BloodTest : MonoBehaviour {
         float XposSTDBall = transform.position.x + PowerUpSpeedX;
         float YposSTDBall = transform.position.y + PowerUpSpeedY;
         transform.position = new Vector2(XposSTDBall, YposSTDBall);
+
+        Vector2 PowerUpSize = StdPongPlayScript.PowerupsText[1].transform.localScale;//size of powerup
+        StdPongPlayScript.PowerupsText[1].transform.position = new Vector2(XposSTDBall + PowerUpSize.x, YposSTDBall); //transform condom blinking text
+
     }
 
     //Bullet colitions
     private void OnTriggerEnter2D(Collider2D otherCollider)
     {
         Sidelines mySideline = otherCollider.gameObject.GetComponent<Sidelines>();//get the sidelines
-        TopLine myTopLine = otherCollider.gameObject.GetComponent<TopLine>();//get the Topline
         BottomLine myBottomline = otherCollider.gameObject.GetComponent<BottomLine>();//get the Bottomline
         PlayerScript myPlayer = otherCollider.gameObject.GetComponent<PlayerScript>();//get the Player
         EnemyScript myEnemy = otherCollider.gameObject.GetComponent<EnemyScript>();//get the STD
@@ -58,6 +63,8 @@ public class BloodTest : MonoBehaviour {
         {
             transform.position = PointOutSideScreen;//bullet disappears
             MovePowerUp = false; //StopBulletMovement
+
+            StdPongPlayScript.PowerupsText[1].transform.position = new Vector2(12, 12); //transform condom blinking text
         }
         else if (myPlayer != null)
         {
@@ -68,6 +75,8 @@ public class BloodTest : MonoBehaviour {
             StdPongPlayScript.MyPlayerHealth += 0.05f;//increace player immune by 5%
             StdPongPlayScript.intCurrentPlayerScore += 3; //reduce player points 
 
+
+            StdPongPlayScript.PowerupsText[1].transform.position = new Vector2(12, 12); //transform condom blinking text
         }
 
 

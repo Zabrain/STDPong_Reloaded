@@ -44,9 +44,9 @@ TagManager:
   - name: SideLines
     uniqueID: 1716431535
     locked: 0
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: STDBall
     uniqueID: 3352944083
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0

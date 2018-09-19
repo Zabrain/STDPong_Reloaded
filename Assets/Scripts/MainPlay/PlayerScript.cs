@@ -28,21 +28,24 @@ public class PlayerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        PlayerControl();//controls player movement
-        KeyBoardControl();//for keyboard controls
-
-        //checks for player size as a result of powerup
-        if (SharpCondomsPlayerSizeCounter > 0)
+        if (MainDirectorScript.IsGamePaused == false && MainDirectorScript.boolLeveleStart == true)
         {
-            SharpCondomsPlayerSizeCounter += 1;
-        }
-        if (SharpCondomsPlayerSizeCounter > 200)
-        {
-            myPlayer.transform.localScale = new Vector2(PlayerObjectSize.x, PlayerObjectSize.y );//reduce player size to normal size       
-            SharpCondomsPlayerSizeCounter = 0;
+            PlayerControl();//controls player movement
+            KeyBoardControl();//for keyboard controls
 
+            //checks for player size as a result of powerup
+            if (SharpCondomsPlayerSizeCounter > 0)
+            {
+                SharpCondomsPlayerSizeCounter += 1;
+            }
+            if (SharpCondomsPlayerSizeCounter > 200)
+            {
+                myPlayer.transform.localScale = new Vector2(PlayerObjectSize.x, PlayerObjectSize.y);//reduce player size to normal size       
+                SharpCondomsPlayerSizeCounter = 0;
+
+            }
         }
+            
     }
 
 
