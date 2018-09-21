@@ -55,13 +55,13 @@ public class StartAnimationScript : MonoBehaviour {
         {
             PlayerPrefs.SetString("CurrentScene", "StdPongPlay");//sets the next scene
             PlayerPrefs.SetString("SelectedPlayer", "Obi");//Player Selected (Ada or Obi)
-            SceneManager.LoadScene("StdPongPlay");
+            //SceneManager.LoadScene("StdPongPlay");
         }
         else if (PlayerClicked == "Ada")
         {
             PlayerPrefs.SetString("CurrentScene", "StdPongPlay");//sets the next scene
             PlayerPrefs.SetString("SelectedPlayer", "Ada");//Player Selected (Ada or Obi)
-            SceneManager.LoadScene("StdPongPlay");
+            //SceneManager.LoadScene("StdPongPlay");
         }
         else 
         {

@@ -69,8 +69,9 @@ public class StdPongPlayScript : MonoBehaviour {
         intStdBulletDelayTime = 500 / intLevel;//set std bullet delay time
         intPowerupDelayTime = 250 * intLevel; //set powerup delay time
 
-        MyPlayerHealth =1f;//initialize player health
-        MyEnemyHealth=1f;//initialize enemy health
+
+        MyPlayerHealth = PlayerPrefs.GetFloat("MyPlayerHealth"); ;//initialize player health
+        MyEnemyHealth = PlayerPrefs.GetFloat("MyEnemyHealth"); ;//initialize enemy health
 
         MyPlayerImmuneSlider.value = MyPlayerHealth;
         MyEnemyImmuneSlider.value = MyEnemyHealth;

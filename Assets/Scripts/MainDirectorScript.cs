@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainDirectorScript : MonoBehaviour {
     
@@ -30,11 +31,13 @@ public class MainDirectorScript : MonoBehaviour {
 
             PlayerPrefs.SetString("STDScrollFrom", "StoryMode");//This identifies where an STD scroll is being opened from 
 
+            PlayerPrefs.SetFloat("MyPlayerHealth", 1f);
+            PlayerPrefs.SetFloat("MyEnemyHealth", 1f);
+
             //end all playerprefs to instantiate
 
             PlayerPrefs.SetInt("PlayedBefore",1); //make played
         }
-
 
         //delete this
         PlayerPrefs.SetString("CurrentScene", "StdPongPlay");//sets the current scene
@@ -49,7 +52,7 @@ public class MainDirectorScript : MonoBehaviour {
         //check what the current scene is
         if (PlayerPrefs.GetString("CurrentScene") == "StdPongPlay")
         {
-            boolLeveleStart = true;
+            boolLeveleStart = false;
         }
         
     }
@@ -72,5 +75,9 @@ public class MainDirectorScript : MonoBehaviour {
         IsGamePaused = false;
     }
 
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 
 }

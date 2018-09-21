@@ -26,13 +26,18 @@ public class LevelStartPanelScript : MonoBehaviour {
         //select the level enemy
         EnemyImage.overrideSprite = EnemyIntro[MainDirectorScript.intLevel];
         
-
-
-
     }
 	
 	// Update is called once per frame
 	void Update () {
 		
+
+
 	}
+
+    //startbutton
+    public void StartButton()
+    {
+        MainDirectorScript.boolLeveleStart = true;
+    }
 }
