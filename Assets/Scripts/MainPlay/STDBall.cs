@@ -10,7 +10,7 @@ public class STDBall : MonoBehaviour
     public GameObject STDBall_Object;
 
     Rigidbody2D STDBallRB;
-    Vector2 STDBallVelocity= new Vector2 (4f,4f);
+    Vector2 STDBallVelocity= new Vector2 (5f,6f);
 
     public static GameObject STDBall_Static;
     
@@ -52,51 +52,78 @@ public class STDBall : MonoBehaviour
         
 
     }
+    
 
     //Ball colitions
     private void OnTriggerEnter2D(Collider2D otherCollider)
     {
-        Sidelines mySideline = otherCollider.gameObject.GetComponent<Sidelines>();//get the sidelines
+       // Sidelines mySideline = otherCollider.gameObject.GetComponent<Sidelines>();//get the sidelines
+        LeftLine myLeftLine = otherCollider.gameObject.GetComponent<LeftLine>();//get the sidelines
+        RightLine myRightLine = otherCollider.gameObject.GetComponent<RightLine>();//get the sidelines
         TopLine myTopLine = otherCollider.gameObject.GetComponent<TopLine>();//get the Topline
         BottomLine myBottomline = otherCollider.gameObject.GetComponent<BottomLine>();//get the Bottomline
         PlayerScript myPlayer = otherCollider.gameObject.GetComponent<PlayerScript>();//get the Player
         EnemyScript myEnemy = otherCollider.gameObject.GetComponent<EnemyScript>();//get the STD
-        
+
 
         //if the collliding object is any sideline
-        if (mySideline != null)
+        if (myRightLine != null)
         {
-            STDBallVelocity = new Vector2(STDBallVelocity.x * -1, STDBallVelocity.y);
+            MyAudioManager.BallBounce();
+
+            if (STDBallVelocity.x > 0) { STDBallVelocity.x *= -1; }
+            STDBallVelocity = new Vector2(STDBallVelocity.x, STDBallVelocity.y);
+            STDBallRB.velocity = STDBallVelocity;
+            //STDBallSpeedX *= -1;
+            
+        }
+        if (myLeftLine != null)
+        {
+            MyAudioManager.BallBounce();
+
+            if (STDBallVelocity.x < 0) { STDBallVelocity.x *= -1; }
+            STDBallVelocity = new Vector2(STDBallVelocity.x, STDBallVelocity.y);
             STDBallRB.velocity = STDBallVelocity;
             //STDBallSpeedX *= -1;
         }
         //if the collliding object is topline
         else if (myTopLine != null)
         {
-            STDBallVelocity = new Vector2(STDBallVelocity.x, STDBallVelocity.y * -1);
+
+            MyAudioManager.BallBounce();
+
+            if (STDBallVelocity.y > 0) { STDBallVelocity.y *= -1; }
+            STDBallVelocity = new Vector2(STDBallVelocity.x, STDBallVelocity.y);
             STDBallRB.velocity = STDBallVelocity;
 
             StdPongPlayScript.MyEnemyHealth -= .10f;//reduce the enemy health
 
             StdPongPlayScript.intCurrentPlayerScore += 10; //increase player points 
+            
         }
         //if the collliding object is bottomline
         else if (myBottomline != null)
         {
-            STDBallVelocity = new Vector2(STDBallVelocity.x, STDBallVelocity.y * -1);
+            MyAudioManager.BallBounce();
+
+            if (STDBallVelocity.y < 0) { STDBallVelocity.y *= -1; } 
+            STDBallVelocity = new Vector2(STDBallVelocity.x, STDBallVelocity.y);
             STDBallRB.velocity = STDBallVelocity;
             
 
             StdPongPlayScript.MyPlayerHealth -= .05f;//reduce the player health
 
-            StdPongPlayScript.intCurrentPlayerScore -= 5; //reduce player points 
+            StdPongPlayScript.intCurrentPlayerScore -= 10; //reduce player points 
+            
 
         }
         else if (myPlayer != null)
-        { 
+        {
+            MyAudioManager.BallBounce();
+
             int RandomDirection = Random.Range(1, 3);
-            int RandomSlantX = Random.Range(3, 8);
-            int RandomSlantY = Random.Range(3, 8);
+            int RandomSlantX = Random.Range(5, 8);
+            int RandomSlantY = Random.Range(6, 10);
 
             if (RandomDirection == 1)
             {
@@ -108,13 +135,17 @@ public class STDBall : MonoBehaviour
             }
 
             STDBallRB.velocity = STDBallVelocity;
+            
+
 
         }
         else if (myEnemy != null)
         {
+            MyAudioManager.BallBounce();
+
             int RandomDirection = Random.Range(1, 3);
-            int RandomSlantX = Random.Range(3, 8);
-            int RandomSlantY = Random.Range(3, 8);
+            int RandomSlantX = Random.Range(5, 8);
+            int RandomSlantY = Random.Range(6, 10);
 
             if (RandomDirection == 1)
             {
@@ -126,6 +157,8 @@ public class STDBall : MonoBehaviour
             }
 
             STDBallRB.velocity = STDBallVelocity;
+
+
         }
 
     }

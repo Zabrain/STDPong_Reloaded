@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4429864659821194}
   - component: {fileID: 212157736778581238}
-  - component: {fileID: 114706277283684456}
   m_Layer: 0
   m_Name: UnProSexText
   m_TagString: Untagged
@@ -36,23 +35,11 @@ Transform:
   m_GameObject: {fileID: 1867998507050520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114706277283684456
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1867998507050520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc6049e5eb8bb59488a2a2cde3a8ac0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BlinkerTextObject: {fileID: 1867998507050520}
 --- !u!212 &212157736778581238
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -88,12 +75,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 66c28099cb4a16c4fa34a104e6fcbd76, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 258be3a1e82811b47a37193ca0daafe9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 0.14}
+  m_Size: {x: 2.69, y: 0.44}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

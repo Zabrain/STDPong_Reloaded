@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Leaderboards.unity
     guid: 7c97a1eb510890b4f8e2760a62fad0d9
+  - enabled: 1
+    path: Assets/Scenes/GLossSceneForGlobal.unity
+    guid: 438080899c85fb349b5bf40cb857c4ce
+  - enabled: 1
+    path: Assets/Scenes/Winner.unity
+    guid: ec94818826ccea64782ec2f71dceda4e
   m_configObjects: {}

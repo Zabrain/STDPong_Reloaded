@@ -34,10 +34,27 @@ public class MainDirectorScript : MonoBehaviour {
             PlayerPrefs.SetFloat("MyPlayerHealth", 1f);
             PlayerPrefs.SetFloat("MyEnemyHealth", 1f);
 
+            //HighScores
+            PlayerPrefs.SetString("HighScoreName1", "---");//player score
+            PlayerPrefs.SetInt("HighScore1", 0);//player score
+            PlayerPrefs.SetString("HighScoreName2", "---");//player score
+            PlayerPrefs.SetInt("HighScore2", 0);//player score
+            PlayerPrefs.SetString("HighScoreName3", "---");//player score
+            PlayerPrefs.SetInt("HighScore3", 0);//player score
+            PlayerPrefs.SetString("HighScoreName4", "---");//player score
+            PlayerPrefs.SetInt("HighScore4", 0);//player score
+            PlayerPrefs.SetString("HighScoreName5", "---");//player score
+            PlayerPrefs.SetInt("HighScore5", 0);//player score
+
+            PlayerPrefs.SetInt("NickNameIndex", 1);//NicknameIndex
+            
+
             //end all playerprefs to instantiate
 
             PlayerPrefs.SetInt("PlayedBefore",1); //make played
         }
+
+       // PlayerPrefs.SetInt("CurrentLevel", 5);
 
         //delete this
         PlayerPrefs.SetString("CurrentScene", "StdPongPlay");//sets the current scene
@@ -45,6 +62,9 @@ public class MainDirectorScript : MonoBehaviour {
         intLevel = PlayerPrefs.GetInt("CurrentLevel");//get the current level
 
         strLevel = LevelNames[intLevel];
+
+
+
     }
 
     void Start()
@@ -53,6 +73,7 @@ public class MainDirectorScript : MonoBehaviour {
         if (PlayerPrefs.GetString("CurrentScene") == "StdPongPlay")
         {
             boolLeveleStart = false;
+            IsGamePaused = false;
         }
         
     }
@@ -61,7 +82,10 @@ public class MainDirectorScript : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+                
+        //}
 
 
     }
@@ -78,6 +102,11 @@ public class MainDirectorScript : MonoBehaviour {
     public void MainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void Leaderboard()
+    {
+        SceneManager.LoadScene("Leaderboards");
     }
 
 }

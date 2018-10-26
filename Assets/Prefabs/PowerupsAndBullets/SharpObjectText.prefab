@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4201785615089988}
   - component: {fileID: 212916166785099134}
-  - component: {fileID: 114504404277720632}
   m_Layer: 0
   m_Name: SharpObjectText
   m_TagString: Untagged
@@ -36,23 +35,11 @@ Transform:
   m_GameObject: {fileID: 1025186838774870}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114504404277720632
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1025186838774870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc6049e5eb8bb59488a2a2cde3a8ac0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BlinkerTextObject: {fileID: 1025186838774870}
 --- !u!212 &212916166785099134
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -88,12 +75,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5c7f658ba136dcf47b7cb1a7e60e6d3b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ead6e6423afcaad41a547647c0a44ff1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 0.17}
+  m_Size: {x: 2.26, y: 0.46}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

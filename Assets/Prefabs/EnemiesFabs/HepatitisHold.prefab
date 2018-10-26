@@ -174,7 +174,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1611944693589236}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68bf426980080384d9a1403c50a317ab, type: 3}
   m_Name: 
@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bf426980080384d9a1403c50a317ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myEnemy: {fileID: 0}
+  myEnemy: {fileID: 1812957058322450}
 --- !u!212 &212474043403077408
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -225,7 +225,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -942023213
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e9b80078056d88248a31278f68dd6bed, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

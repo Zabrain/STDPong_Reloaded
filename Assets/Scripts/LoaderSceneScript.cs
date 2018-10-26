@@ -9,10 +9,32 @@ public class LoaderSceneScript : MonoBehaviour {
 
     public Slider LoadingSlider;
     public TextMeshProUGUI LoadingPercent;
+    
 
-    public void LoadSceneSTDPlay()
+    public void LoadSceneSTDPlay() //load mainplay
     {
         StartCoroutine(LoadSceneAsynchronously("StdPongPlay"));
+    }
+
+    public void LoadSceneQuizGame() //load quiz game
+    {
+        StartCoroutine(LoadSceneAsynchronously("QuizGame"));
+    }
+    public void LoadSceneSTDLose() //load quiz game
+    {
+        StartCoroutine(LoadSceneAsynchronously("GLossSceneForGlobal"));
+    }
+    public void LoadSceneSTDScroll() //load quiz game
+    {
+        StartCoroutine(LoadSceneAsynchronously("STDScroll"));
+    }
+    public void LoadSceneFinishStoryMode()
+    {
+        StartCoroutine(LoadSceneAsynchronously("Winner"));
+    }
+    public void LoadSceneLeaderBoard()
+    {
+        StartCoroutine(LoadSceneAsynchronously("Leaderboards"));
     }
 
     IEnumerator LoadSceneAsynchronously(string SceneToLoad)
@@ -24,7 +46,7 @@ public class LoaderSceneScript : MonoBehaviour {
             float progress = Mathf.Clamp01(MyOperation.progress/.9f);
 
             LoadingSlider.value = progress;
-            LoadingPercent.text = (progress * 100).ToString() + "%"; 
+            LoadingPercent.text = (progress * 100).ToString("F2") + "%"; 
 
             yield return null;
         }

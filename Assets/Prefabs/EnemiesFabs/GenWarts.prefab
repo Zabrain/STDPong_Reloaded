@@ -170,7 +170,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1605701612596260}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68bf426980080384d9a1403c50a317ab, type: 3}
   m_Name: 
@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bf426980080384d9a1403c50a317ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myEnemy: {fileID: 0}
+  myEnemy: {fileID: 1672144862729084}
 --- !u!212 &212580988365193980
 SpriteRenderer:
   m_ObjectHideFlags: 1

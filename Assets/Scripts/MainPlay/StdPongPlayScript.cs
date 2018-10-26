@@ -11,6 +11,7 @@ public class StdPongPlayScript : MonoBehaviour {
 
     public Sprite[] BackgroundSprite; //arrays of all the background sprites
 
+
     public TextMeshProUGUI CurrentPlayerScore;
     public static int intCurrentPlayerScore; //the player score holder
     int lastScore=0;
@@ -27,8 +28,6 @@ public class StdPongPlayScript : MonoBehaviour {
     public GameObject[] MySTDBall;//array of STDBall objects
     public GameObject[] MyPowerups;//array of PowerUp objects
     public GameObject[] MySTDBullets;//array of STDBullet objects
-    public GameObject[] MyPowerupsText;//array of PowerUp objects text
-    public GameObject[] MySTDBulletsText;//array of STDBullet objects text
 
     //the actual objects
     GameObject ThePlayer;
@@ -36,10 +35,11 @@ public class StdPongPlayScript : MonoBehaviour {
     GameObject TheSTDBall;
     GameObject[] ThePowerups = new GameObject[3];//array of PowerUp objects
     GameObject[] TheSTDBullets = new GameObject[2];
-    public static GameObject[] PowerupsText = new GameObject[3];//array of PowerUp objects text
-    public static GameObject[] STDBulletsText = new GameObject[2];//array of STDBullet objects text
 
-    int intLevel = 1;//current level
+
+    public GameObject LoadingPane;
+
+    int intLevel;//current level
 
     int intStdBulletDelayTime;//delay time before STDBullet fire
     int intStdBulletCountDownTimer=0;//Countdown to delay time
@@ -53,10 +53,21 @@ public class StdPongPlayScript : MonoBehaviour {
     public static float MyPlayerHealth;
     public static float MyEnemyHealth;
 
+    public TextMeshProUGUI STDName;
+    public TextMeshProUGUI LevelNumber;
+
     public GameObject WinPanel_Object; //the panel the pops up when player wins pong play
+
+    public GameObject MainGamePane;
+    public GameObject AllCanvasExceptLoadPane;
 
     private void Awake()
     {
+        intLevel = MainDirectorScript.intLevel; //get level values
+        STDName.text = MainDirectorScript.strLevel;
+
+        LevelNumber.text = "LEVEL " + intLevel.ToString();
+
         RenderTheBackground();//creates the background
 
         STDBallPicker();
@@ -66,14 +77,19 @@ public class StdPongPlayScript : MonoBehaviour {
         CreatePowerUps(); //instantiate all powerups
         CreateSTDBullets(); //instantiate all STD Bullets
 
-        intStdBulletDelayTime = 500 / intLevel;//set std bullet delay time
-        intPowerupDelayTime = 250 * intLevel; //set powerup delay time
+        //intStdBulletDelayTime = 500 / intLevel;//set std bullet delay time
+        //intPowerupDelayTime = 250 * intLevel; //set powerup delay time
+
+        intStdBulletDelayTime = (int) (200/intLevel)+150;//set std bullet delay time
+        intPowerupDelayTime = 700; //set powerup delay time
 
 
         MyPlayerHealth = PlayerPrefs.GetFloat("MyPlayerHealth"); ;//initialize player health
         MyEnemyHealth = PlayerPrefs.GetFloat("MyEnemyHealth"); ;//initialize enemy health
 
-        MyPlayerImmuneSlider.value = MyPlayerHealth;
+       // MyEnemyHealth = .1f;
+
+       MyPlayerImmuneSlider.value = MyPlayerHealth;
         MyEnemyImmuneSlider.value = MyEnemyHealth;
 
         intCurrentPlayerScore = PlayerPrefs.GetInt("CurrentScore"); //get current player score
@@ -217,15 +233,18 @@ public class StdPongPlayScript : MonoBehaviour {
     {
         if (MyPlayerHealth <= 0f)
         {
-            MainDirectorScript.IsGamePaused = true;//pause the game
+            MainDirectorScript.boolLeveleStart = false;//pause the game
             WinPanel_Object.SetActive(true);//open win panel
-            SceneManager.LoadScene("LossScene");
+
+            PlayerPrefs.SetInt("CurrentScore", intCurrentPlayerScore);
+            
+            SceneManager.LoadScene("GLossSceneForGlobal");
         }
     }
 
     void GotoLossScene()
     {
-        SceneManager.LoadScene("LossScene");
+        SceneManager.LoadScene("GLossSceneForGlobal");
     }
 
 
@@ -234,14 +253,23 @@ public class StdPongPlayScript : MonoBehaviour {
     {
         if (MyEnemyHealth <= 0f)
         {           
-            MainDirectorScript.IsGamePaused = true;//pause the game
+            MainDirectorScript.boolLeveleStart = false;//pause the game
             WinPanel_Object.SetActive(true);//open win panel
+
+            PlayerPrefs.SetInt("CurrentScore", intCurrentPlayerScore);
+            MyAudioManager.myAudioClipsSFXs[3].Play();
+
         }
     }
     
     public void GotoSTDScroll()
     {
-        SceneManager.LoadScene("STDScroll");
+        
+        MainGamePane.SetActive(false);
+        AllCanvasExceptLoadPane.SetActive(false);
+        LoadingPane.SetActive(true);
+        LoadingPane.GetComponent<LoaderSceneScript>().LoadSceneSTDScroll(); //call the loader
+        //SceneManager.LoadScene("STDScroll");
     }
 
     void RenderTheBackground()
@@ -301,19 +329,14 @@ public class StdPongPlayScript : MonoBehaviour {
         ThePowerups[0]=Instantiate(MyPowerups[0], MyPowerupsPosition.position, MyPowerupsPosition.rotation);//place the level's powerups at transform position
         ThePowerups[1]=Instantiate(MyPowerups[1], MyPowerupsPosition.position, MyPowerupsPosition.rotation);//place the level's powerups at transform position
         ThePowerups[2]=Instantiate(MyPowerups[2], MyPowerupsPosition.position, MyPowerupsPosition.rotation);//place the level's powerups at transform position
-
-        PowerupsText[0] = Instantiate(MyPowerupsText[0], MyPowerupsPosition.position, MyPowerupsPosition.rotation);
-        PowerupsText[1] = Instantiate(MyPowerupsText[1], MyPowerupsPosition.position, MyPowerupsPosition.rotation);
-        PowerupsText[2] = Instantiate(MyPowerupsText[2], MyPowerupsPosition.position, MyPowerupsPosition.rotation);
+        
     }
 
     void CreateSTDBullets() //instantiate all STD Bullets
     {
         TheSTDBullets[0] = Instantiate(MySTDBullets[0], MySTDBulletsPosition.position, MySTDBulletsPosition.rotation);//place the level's std bullets at transform position
         TheSTDBullets[1]= Instantiate(MySTDBullets[1], MySTDBulletsPosition.position, MySTDBulletsPosition.rotation);//place the level's std bullets at transform position
-
-        STDBulletsText[0] = Instantiate(MySTDBulletsText[0], MySTDBulletsPosition.position, MySTDBulletsPosition.rotation);
-        STDBulletsText[1] = Instantiate(MySTDBulletsText[1], MySTDBulletsPosition.position, MySTDBulletsPosition.rotation);
+        
 
     }
 

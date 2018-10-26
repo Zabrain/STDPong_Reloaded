@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4309839377406298}
   - component: {fileID: 212938240205090076}
-  - component: {fileID: 114234269102437860}
   m_Layer: 0
   m_Name: BloodTestText
   m_TagString: Untagged
@@ -36,23 +35,11 @@ Transform:
   m_GameObject: {fileID: 1968462878948094}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114234269102437860
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1968462878948094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc6049e5eb8bb59488a2a2cde3a8ac0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BlinkerTextObject: {fileID: 1968462878948094}
 --- !u!212 &212938240205090076
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -88,12 +75,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 42c48e373b1d8e1449bb6cd26a2d33a7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b6fe1d3838a0544eafa66f3103cd000, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 0.17}
+  m_Size: {x: 2.06, y: 0.42}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

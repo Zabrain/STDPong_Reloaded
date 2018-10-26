@@ -16,8 +16,19 @@ public class StartAnimationScript : MonoBehaviour {
     public Transform[] SelectorPositions;
     public GameObject SelectorImage;
 
-	// Use this for initialization
-	void Start () {
+    public GameObject LoadingPane;
+    public GameObject SelectPane;
+    public GameObject NicknamePane;
+
+    public TextMeshProUGUI NickName;
+    public TextMeshProUGUI NickNameWarning;
+
+    bool NickNameTyping=false;
+
+    // Use this for initialization
+    void Start () {
+
+        PlayerPrefs.SetInt("NickNameIndex", PlayerPrefs.GetInt("NickNameIndex") + 1);//Increase NicknameIndex
 
         RenderTheBackground();
 
@@ -33,10 +44,18 @@ public class StartAnimationScript : MonoBehaviour {
         {
             SelectorImage.transform.position = Vector3.Lerp(SelectorImage.transform.position, SelectorPositions[1].position, 10 * Time.deltaTime);
         }
-	}
+
+        if (NickNameTyping)
+        {
+            NickNameWarning.text = NickName.text.Trim() + PlayerPrefs.GetInt("NickNameIndex").ToString();
+        }
+        
+
+    }
 
     public void ClickObi()
     {
+        MyAudioManager.myAudioClipsSFXs[5].Play();
         PlayerClicked = "Obi";
         myWarning_Object.SetActive(false);//Clear Warning to select a player
         SelectorImage.SetActive(true);//Show selector border
@@ -44,6 +63,7 @@ public class StartAnimationScript : MonoBehaviour {
 
     public void ClickAda()
     {
+        MyAudioManager.myAudioClipsSFXs[5].Play();
         PlayerClicked = "Ada";
         myWarning_Object.SetActive(false);//Clear Warning to select a player
         SelectorImage.SetActive(true);//Show selector border
@@ -56,18 +76,53 @@ public class StartAnimationScript : MonoBehaviour {
             PlayerPrefs.SetString("CurrentScene", "StdPongPlay");//sets the next scene
             PlayerPrefs.SetString("SelectedPlayer", "Obi");//Player Selected (Ada or Obi)
             //SceneManager.LoadScene("StdPongPlay");
+            SelectorImage.SetActive(false);
+            SelectPane.SetActive(false);
+            NicknamePane.SetActive(true);
         }
         else if (PlayerClicked == "Ada")
         {
             PlayerPrefs.SetString("CurrentScene", "StdPongPlay");//sets the next scene
             PlayerPrefs.SetString("SelectedPlayer", "Ada");//Player Selected (Ada or Obi)
-            //SceneManager.LoadScene("StdPongPlay");
+
+            SelectorImage.SetActive(false);
+            SelectPane.SetActive(false);
+            NicknamePane.SetActive(true);
         }
-        else 
+        else
         {
             myWarning_Object.SetActive(true);//Warn to select a player
         }
     }
+
+
+    public void SecondGo()
+    {
+
+        if(NickName.text.Trim() != "")
+        {
+            PlayerPrefs.SetString("NickName", NickName.text.Trim()+ PlayerPrefs.GetInt("NickNameIndex").ToString());
+            PlayerPrefs.SetInt("CurrentScore", 0);
+            PlayerPrefs.SetInt("CurrentLevel", 1);
+
+            NicknamePane.SetActive(false);
+            LoadingPane.SetActive(true);
+            LoadingPane.GetComponent<LoaderSceneScript>().LoadSceneSTDPlay(); //call the loader
+
+        }
+        else
+        {
+            NickNameWarning.text= "Please, Enter a Nickname";
+            NickNameTyping = false;
+        }
+               
+    }
+
+    public void NickTextChange()
+    {
+        NickNameTyping = true;
+    }
+
 
     void RenderTheBackground()
     {
