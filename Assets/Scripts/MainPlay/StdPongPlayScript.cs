@@ -238,7 +238,7 @@ public class StdPongPlayScript : MonoBehaviour {
 
             PlayerPrefs.SetInt("CurrentScore", intCurrentPlayerScore);
             
-            SceneManager.LoadScene("GLossSceneForGlobal");
+            SceneManager.LoadScene("GLossSceneForGlobal");            
         }
     }
 

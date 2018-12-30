@@ -30,6 +30,15 @@ public class STDBall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //make sure ball does not escape the sceen
+        if (STDBallRB.position.x > myScreen.x)
+        {
+            STDBallRB.position= new Vector2( myScreen.x, STDBallRB.position.y);
+        }
+        else if (STDBallRB.position.x < -myScreen.x)
+        {
+            STDBallRB.position = new Vector2(-myScreen.x, STDBallRB.position.y);
+        }
     }
 
     private void FixedUpdate()
@@ -52,6 +61,8 @@ public class STDBall : MonoBehaviour
         
 
     }
+
+    
     
 
     //Ball colitions

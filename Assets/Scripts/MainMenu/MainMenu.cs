@@ -18,10 +18,18 @@ public class MainMenu : MonoBehaviour {
 		
 	}
 
-    public void StoryMode()
+    public void StoryModeNew()
     {
         PlayerPrefs.SetString("STDScrollFrom", "StoryMode");
-        SceneManager.LoadScene("StartingAnimation");
+        SceneManager.LoadScene("StoryAnimation");
+
+        PlayerPrefs.SetFloat("MyEnemyHealth", 1f); //normalize enemy health
+    }
+
+    public void StoryModeContinue()
+    {
+        PlayerPrefs.SetString("STDScrollFrom", "StoryMode");
+        SceneManager.LoadScene("StoryAnimation");
 
         PlayerPrefs.SetFloat("MyEnemyHealth", 1f); //normalize enemy health
     }

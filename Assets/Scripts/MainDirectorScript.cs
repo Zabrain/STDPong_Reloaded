@@ -54,7 +54,7 @@ public class MainDirectorScript : MonoBehaviour {
             PlayerPrefs.SetInt("PlayedBefore",1); //make played
         }
 
-       // PlayerPrefs.SetInt("CurrentLevel", 5);
+       //PlayerPrefs.SetInt("CurrentLevel", 10);
 
         //delete this
         PlayerPrefs.SetString("CurrentScene", "StdPongPlay");//sets the current scene
