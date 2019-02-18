@@ -70,7 +70,7 @@ public class Condom : MonoBehaviour {
 
     void MakeTextBlink()
     {
-        Debug.Log(MyBlinkerCounter);
+        //Debug.Log(MyBlinkerCounter);
         if (MyBlinkerCounter < 200)
         {
             MyBlinkerCounter += 1;

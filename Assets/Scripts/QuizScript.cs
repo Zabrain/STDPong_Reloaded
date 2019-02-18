@@ -183,23 +183,31 @@ public class QuizScript : MonoBehaviour {
     
     public void ProceedWinQuiz()
     {
-        //increase level 
-        if (PlayerPrefs.GetInt("CurrentLevel") < 10) //if game hasn't finised
+        if (PlayerPrefs.GetString("SelectedMode") == "StoryMode")
         {
-            int newLevel = PlayerPrefs.GetInt("CurrentLevel") + 1;
-            PlayerPrefs.SetInt("CurrentLevel", newLevel);
-            
-            MainQuizPane.SetActive(false);
-            LoadingPane.SetActive(true);
-            LoadingPane.GetComponent<LoaderSceneScript>().LoadSceneSTDPlay(); //call the loader
+            //increase level 
+            if (PlayerPrefs.GetInt("CurrentLevel") < 10) //if game hasn't finised
+            {
+                int newLevel = PlayerPrefs.GetInt("CurrentLevel") + 1;
+                PlayerPrefs.SetInt("CurrentLevel", newLevel);
+
+                MainQuizPane.SetActive(false);
+                LoadingPane.SetActive(true);
+                LoadingPane.GetComponent<LoaderSceneScript>().LoadSceneSTDPlay(); //call the loader
+            }
+            else //if game has finished
+            {
+                MainQuizPane.SetActive(false);
+                LoadingPane.SetActive(true);
+                LoadingPane.GetComponent<LoaderSceneScript>().LoadSceneFinishStoryMode(); //call the loader
+            }
         }
-        else //if game has finished
+        else if (PlayerPrefs.GetString("SelectedMode") == "ArcadeMode")
         {
-            MainQuizPane.SetActive(false);
-            LoadingPane.SetActive(true);
-            LoadingPane.GetComponent<LoaderSceneScript>().LoadSceneFinishStoryMode(); //call the loader
+
         }
-       
+
+
     }
 
     public void ProceedLoseQuiz()

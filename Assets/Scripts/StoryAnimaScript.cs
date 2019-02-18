@@ -26,8 +26,7 @@ public class StoryAnimaScript : MonoBehaviour {
         {
             StoryTexts[i].transform.position = TextOutPosition.position;
         }
-
-        
+               
 
     }
 	
@@ -44,10 +43,10 @@ public class StoryAnimaScript : MonoBehaviour {
                 StoryTexts[intStoryFrameIndex + 1].transform.position = Vector2.MoveTowards(StoryTexts[intStoryFrameIndex + 1].transform.position, TextInPosition.position, 7 * Time.deltaTime);
                 StoryImages[intStoryFrameIndex + 1].transform.position = Vector2.MoveTowards(StoryImages[intStoryFrameIndex + 1].transform.position, ImageInPosition.position, 15 * Time.deltaTime);
                 //check if texts and images have reached their positions
-                if (StoryTexts[intStoryFrameIndex].transform.position.y.ToString() == TextOutPosition.position.y.ToString() && 
-                    StoryTexts[intStoryFrameIndex + 1].transform.position.y.ToString() == TextInPosition.position.y.ToString() &&
-                    StoryImages[intStoryFrameIndex].transform.position.x.ToString() == ImageOutPosition.position.x.ToString() &&
-                    StoryImages[intStoryFrameIndex + 1].transform.position.x.ToString() == ImageInPosition.position.x.ToString())
+                if (StoryTexts[intStoryFrameIndex].transform.position.y.ToString("F") == TextOutPosition.position.y.ToString("F") && 
+                    StoryTexts[intStoryFrameIndex + 1].transform.position.y.ToString("F") == TextInPosition.position.y.ToString("F") &&
+                    StoryImages[intStoryFrameIndex].transform.position.x.ToString("F") == ImageOutPosition.position.x.ToString("F") &&
+                    StoryImages[intStoryFrameIndex + 1].transform.position.x.ToString("F") == ImageInPosition.position.x.ToString("F"))
                 {
                     NextButton.SetActive(true);
                     boolNextText = false;

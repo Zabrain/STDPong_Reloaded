@@ -36,6 +36,10 @@ public class LoaderSceneScript : MonoBehaviour {
     {
         StartCoroutine(LoadSceneAsynchronously("Leaderboards"));
     }
+    public void LoadStartingAnimation()
+    {
+        StartCoroutine(LoadSceneAsynchronously("StartingAnimation"));
+    }
 
     IEnumerator LoadSceneAsynchronously(string SceneToLoad)
     {

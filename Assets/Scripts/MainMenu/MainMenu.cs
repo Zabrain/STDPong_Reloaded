@@ -20,7 +20,7 @@ public class MainMenu : MonoBehaviour {
 
     public void StoryModeNew()
     {
-        PlayerPrefs.SetString("STDScrollFrom", "StoryMode");
+        PlayerPrefs.SetString("SelectedMode", "StoryMode");
         SceneManager.LoadScene("StoryAnimation");
 
         PlayerPrefs.SetFloat("MyEnemyHealth", 1f); //normalize enemy health
@@ -28,16 +28,18 @@ public class MainMenu : MonoBehaviour {
 
     public void StoryModeContinue()
     {
-        PlayerPrefs.SetString("STDScrollFrom", "StoryMode");
-        SceneManager.LoadScene("StoryAnimation");
+        PlayerPrefs.SetString("SelectedMode", "StoryMode");
+        SceneManager.LoadScene("StdPongPlay");
 
         PlayerPrefs.SetFloat("MyEnemyHealth", 1f); //normalize enemy health
     }
 
     public void ArcadeMode()
     {
-        PlayerPrefs.SetString("STDScrollFrom", "ArcadeMode");
-        SceneManager.LoadScene("StdPongPlay");
+        PlayerPrefs.SetString("SelectedMode", "ArcadeMode");
+        SceneManager.LoadScene("ArcadeMode");
+
+        PlayerPrefs.SetFloat("MyEnemyHealth", 1f); //normalize enemy health
     }
 
     public void ListThePlayers()

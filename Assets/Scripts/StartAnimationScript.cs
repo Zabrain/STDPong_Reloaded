@@ -9,6 +9,8 @@ public class StartAnimationScript : MonoBehaviour {
 
     public Sprite BackgroundSprite; //arrays of all the background sprites
 
+    public GameObject Go_Button_Object;
+
     string PlayerClicked = "None";
 
     public GameObject myWarning_Object;
@@ -22,6 +24,8 @@ public class StartAnimationScript : MonoBehaviour {
 
     public TextMeshProUGUI NickName;
     public TextMeshProUGUI NickNameWarning;
+    public TextMeshProUGUI NationalityDll;
+    public TextMeshProUGUI SexDll;
 
     bool NickNameTyping=false;
 
@@ -31,6 +35,15 @@ public class StartAnimationScript : MonoBehaviour {
         PlayerPrefs.SetInt("NickNameIndex", PlayerPrefs.GetInt("NickNameIndex") + 1);//Increase NicknameIndex
 
         RenderTheBackground();
+
+        Go_Button_Object.SetActive(false);//disable the go button until a player is selected
+
+        //skip NickName pane if mode is Arcade
+        if (PlayerPrefs.GetString("SelectedMode") == "ArcadeMode")
+        {
+             SelectPane.SetActive(true);
+             NicknamePane.SetActive(false);
+        }
 
     }
 	
@@ -59,6 +72,7 @@ public class StartAnimationScript : MonoBehaviour {
         PlayerClicked = "Obi";
         myWarning_Object.SetActive(false);//Clear Warning to select a player
         SelectorImage.SetActive(true);//Show selector border
+        Go_Button_Object.SetActive(true);//Show the go button
     }
 
     public void ClickAda()
@@ -67,10 +81,12 @@ public class StartAnimationScript : MonoBehaviour {
         PlayerClicked = "Ada";
         myWarning_Object.SetActive(false);//Clear Warning to select a player
         SelectorImage.SetActive(true);//Show selector border
+        Go_Button_Object.SetActive(true);//Show the go button
     }
 
-    public void ClickGo()
+    public void GoOnSelectPlayer()
     {
+        
         if (PlayerClicked == "Obi")
         {
             PlayerPrefs.SetString("CurrentScene", "StdPongPlay");//sets the next scene
@@ -78,7 +94,11 @@ public class StartAnimationScript : MonoBehaviour {
             //SceneManager.LoadScene("StdPongPlay");
             SelectorImage.SetActive(false);
             SelectPane.SetActive(false);
-            NicknamePane.SetActive(true);
+            LoadingPane.SetActive(true);
+            LoadingPane.GetComponent<LoaderSceneScript>().LoadSceneSTDPlay(); //call the loader
+
+
+            //Debug.Log(PlayerPrefs.GetString("Nationality") + "   " + PlayerPrefs.GetString("PlayerSex"));
         }
         else if (PlayerClicked == "Ada")
         {
@@ -87,7 +107,8 @@ public class StartAnimationScript : MonoBehaviour {
 
             SelectorImage.SetActive(false);
             SelectPane.SetActive(false);
-            NicknamePane.SetActive(true);
+            LoadingPane.SetActive(true);
+            LoadingPane.GetComponent<LoaderSceneScript>().LoadSceneSTDPlay(); //call the loader
         }
         else
         {
@@ -96,19 +117,21 @@ public class StartAnimationScript : MonoBehaviour {
     }
 
 
-    public void SecondGo()
+    public void GoOnNickName() //also resets score and level
     {
 
-        if(NickName.text.Trim() != "")
+        if(NickName.text.Trim() != "" && NationalityDll.text.Trim() != "Select Your Country" && SexDll.text.Trim() != "Select Your Gender")
         {
+            //try to store nickname in DataBase
+
             PlayerPrefs.SetString("NickName", NickName.text.Trim()+ PlayerPrefs.GetInt("NickNameIndex").ToString());
-            PlayerPrefs.SetInt("CurrentScore", 0);
-            PlayerPrefs.SetInt("CurrentLevel", 1);
-
+            PlayerPrefs.SetString("Nationality", NationalityDll.text.Trim());
+            PlayerPrefs.SetString("PlayerSex", SexDll.text.Trim() + PlayerPrefs.GetInt("NickNameIndex").ToString());
+            PlayerPrefs.SetInt("CurrentScore", 0);//reset scores
+            PlayerPrefs.SetInt("CurrentLevel", 1);//reset level
+                        
             NicknamePane.SetActive(false);
-            LoadingPane.SetActive(true);
-            LoadingPane.GetComponent<LoaderSceneScript>().LoadSceneSTDPlay(); //call the loader
-
+            SelectPane.SetActive(true);
         }
         else
         {

@@ -132,14 +132,10 @@ public class StdScroll : MonoBehaviour {
 
     public void Continue_CLick()
     {
-        if (PlayerPrefs.GetString("STDScrollFrom") == "StoryMode")
-        {
             ContentPane.SetActive(false);
             LoadingPane.SetActive(true);
             LoadingPane.GetComponent<LoaderSceneScript>().LoadSceneQuizGame(); //call the loader
             //SceneManager.LoadScene("QuizGame");
-
-        }
     }
 
 

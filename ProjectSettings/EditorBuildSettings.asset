@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/ConsentForm.unity
+    guid: 2a73ae9bbaf55ca4084a649fd35c2ead
+  - enabled: 1
     path: Assets/Scenes/Mainmenu.unity
     guid: c100469dc35ea97499d0dcb2c87d8d47
   - enabled: 1

@@ -21,7 +21,7 @@ public class StdPongPlayScript : MonoBehaviour {
     public Transform MySTDBallPosition;
     public Transform MyPowerupsPosition;
     public Transform MySTDBulletsPosition;
-
+    
     //holders from design
     public GameObject[] MyPlayer;//array of player objects
     public GameObject[] MyEnemies;//array of Enemy objects
@@ -35,7 +35,7 @@ public class StdPongPlayScript : MonoBehaviour {
     GameObject TheSTDBall;
     GameObject[] ThePowerups = new GameObject[3];//array of PowerUp objects
     GameObject[] TheSTDBullets = new GameObject[2];
-
+    
 
     public GameObject LoadingPane;
 
@@ -93,12 +93,15 @@ public class StdPongPlayScript : MonoBehaviour {
         MyEnemyImmuneSlider.value = MyEnemyHealth;
 
         intCurrentPlayerScore = PlayerPrefs.GetInt("CurrentScore"); //get current player score
+
+
+        
     }
 
     // Use this for initialization
     void Start () {
         
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -236,12 +239,14 @@ public class StdPongPlayScript : MonoBehaviour {
             MainDirectorScript.boolLeveleStart = false;//pause the game
             WinPanel_Object.SetActive(true);//open win panel
 
-            PlayerPrefs.SetInt("CurrentScore", intCurrentPlayerScore);
-            
+            StoreHighScore();
+
+
             SceneManager.LoadScene("GLossSceneForGlobal");            
         }
     }
 
+   
     void GotoLossScene()
     {
         SceneManager.LoadScene("GLossSceneForGlobal");
@@ -256,12 +261,22 @@ public class StdPongPlayScript : MonoBehaviour {
             MainDirectorScript.boolLeveleStart = false;//pause the game
             WinPanel_Object.SetActive(true);//open win panel
 
-            PlayerPrefs.SetInt("CurrentScore", intCurrentPlayerScore);
+            StoreHighScore();
+
             MyAudioManager.myAudioClipsSFXs[3].Play();
 
         }
     }
-    
+
+    //stores the highscore
+    void StoreHighScore() 
+    {
+        PlayerPrefs.SetInt("CurrentScore", intCurrentPlayerScore); //local storage
+
+        //try to store highscore online
+        gameObject.GetComponent<GrabHighScoresScript>().AddHighScore(PlayerPrefs.GetString("NickName"), intCurrentPlayerScore);
+    }
+
     public void GotoSTDScroll()
     {
         
@@ -302,6 +317,7 @@ public class StdPongPlayScript : MonoBehaviour {
     void EnemyPicker()
     {
         TheEnemy=Instantiate(MyEnemies[intLevel], MyEnemyPosition.position, MyEnemyPosition.rotation);//place the level's enemy at transform position
+        
     }
 
     void PlayerPicker()

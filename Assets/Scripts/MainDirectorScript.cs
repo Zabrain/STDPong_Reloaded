@@ -22,29 +22,25 @@ public class MainDirectorScript : MonoBehaviour {
         //check if game has never been played before
         if (PlayerPrefs.GetInt("PlayedBefore") != 1) //if not played before, instantiate all playerprefs
         {
+            //HighScore Database Upload marker
+            PlayerPrefs.SetInt("DBUpload", 0);
+
+
+
             //add all playerprefs to instantiate
+            PlayerPrefs.SetString("SelectedMode", "Something"); //Arcade or Story
+
             PlayerPrefs.SetInt("CurrentLevel",1);
 
             PlayerPrefs.SetInt("CurrentScore", 0);//player score
 
             PlayerPrefs.SetString("SelectedPlayer", "Obi");//Player Selected (Ada or Obi)
 
-            PlayerPrefs.SetString("STDScrollFrom", "StoryMode");//This identifies where an STD scroll is being opened from 
+            //PlayerPrefs.SetString("STDScrollFrom", "StoryMode");//This identifies where an STD scroll is being opened from 
 
             PlayerPrefs.SetFloat("MyPlayerHealth", 1f);
             PlayerPrefs.SetFloat("MyEnemyHealth", 1f);
-
-            //HighScores
-            PlayerPrefs.SetString("HighScoreName1", "---");//player score
-            PlayerPrefs.SetInt("HighScore1", 0);//player score
-            PlayerPrefs.SetString("HighScoreName2", "---");//player score
-            PlayerPrefs.SetInt("HighScore2", 0);//player score
-            PlayerPrefs.SetString("HighScoreName3", "---");//player score
-            PlayerPrefs.SetInt("HighScore3", 0);//player score
-            PlayerPrefs.SetString("HighScoreName4", "---");//player score
-            PlayerPrefs.SetInt("HighScore4", 0);//player score
-            PlayerPrefs.SetString("HighScoreName5", "---");//player score
-            PlayerPrefs.SetInt("HighScore5", 0);//player score
+                        
 
             PlayerPrefs.SetInt("NickNameIndex", 1);//NicknameIndex
             
@@ -54,14 +50,27 @@ public class MainDirectorScript : MonoBehaviour {
             PlayerPrefs.SetInt("PlayedBefore",1); //make played
         }
 
-       //PlayerPrefs.SetInt("CurrentLevel", 10);
+        //PlayerPrefs.SetInt("CurrentLevel", 10);
+       // PlayerPrefs.SetString("CurrentScene", "StdPongPlay");//sets the current scene
 
-        //delete this
-        PlayerPrefs.SetString("CurrentScene", "StdPongPlay");//sets the current scene
 
-        intLevel = PlayerPrefs.GetInt("CurrentLevel");//get the current level
 
-        strLevel = LevelNames[intLevel];
+
+        //select the scene based on the selected mode
+        if (PlayerPrefs.GetString("SelectedMode")=="StoryMode")
+        {
+            intLevel = PlayerPrefs.GetInt("CurrentLevel");//get the current level
+
+            strLevel = LevelNames[intLevel];
+        }
+        else if (PlayerPrefs.GetString("SelectedMode") == "ArcadeMode")
+        {
+            intLevel = PlayerPrefs.GetInt("ArcadeLevel");//get the current level
+
+            strLevel = LevelNames[intLevel];
+        }
+
+
 
 
 

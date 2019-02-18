@@ -69,7 +69,7 @@ public class Abstinence : MonoBehaviour {
 
     void MakeTextBlink()
     {
-        Debug.Log(MyBlinkerCounter);
+        //Debug.Log(MyBlinkerCounter);
         if (MyBlinkerCounter < 200)
         {
             MyBlinkerCounter += 1;
@@ -93,7 +93,8 @@ public class Abstinence : MonoBehaviour {
     //Bullet colitions
     private void OnTriggerEnter2D(Collider2D otherCollider)
     {
-        LeftLine myLeftLine = otherCollider.gameObject.GetComponent<LeftLine>();//get the sidelines
+        LeftLine myLeftLine = otherCollider.gameObject.GetComponent<LeftLine>();//get the 
+
         RightLine myRightLine = otherCollider.gameObject.GetComponent<RightLine>();//get the sidelines
         BottomLine myBottomline = otherCollider.gameObject.GetComponent<BottomLine>();//get the Bottomline
         PlayerScript myPlayer = otherCollider.gameObject.GetComponent<PlayerScript>();//get the Player
