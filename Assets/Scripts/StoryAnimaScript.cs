@@ -14,6 +14,7 @@ public class StoryAnimaScript : MonoBehaviour {
     public GameObject[] StoryTexts;
     public GameObject[] StoryImages;
     public GameObject NextButton;
+    public GameObject AcceptButton;
 
     bool boolNextText;
     int intStoryFrameIndex = 0;
@@ -56,7 +57,12 @@ public class StoryAnimaScript : MonoBehaviour {
 
                 }
             }
-               
+            if (intStoryFrameIndex >= 4)
+            {
+                AcceptButton.SetActive(true);
+                NextButton.SetActive(false);
+            }
+
         }
 
        Debug.Log(StoryImages[0].transform.position.x + "   " + ImageOutPosition.position.x + boolNextText ); 
@@ -66,12 +72,16 @@ public class StoryAnimaScript : MonoBehaviour {
 
     public void NextStoryFrame()
     {
-
         boolNextText = true;
         NextButton.SetActive(false);
     }
 
     public void SkipStoryAnimation()
+    {
+        SceneManager.LoadScene("StartingAnimation");
+    }
+
+    public void AcceptedButton()
     {
         SceneManager.LoadScene("StartingAnimation");
     }

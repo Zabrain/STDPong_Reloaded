@@ -49,6 +49,10 @@ public class BloodTest : MonoBehaviour {
                 MovingStuffRB.velocity = Vector2.zero;
             }
         }
+        else
+        {
+            MovingStuffRB.velocity = Vector2.zero;
+        }
     }
 
     void MakePoweupMove()

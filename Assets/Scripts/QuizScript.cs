@@ -386,7 +386,7 @@ public class QuizScript : MonoBehaviour {
             QuizQuestions[0, 5] = "Hepatitis B is most commonly spread from mother to child at birth (perinatal transmission), or through horizontal transmission (exposure to infected blood), especially from an infected child to an uninfected child during the first 5 years of life.";//Explained Answer
 
             QuizQuestions[1, 0] = "Which of these cannot cause a hepatitis B virus infection?";//Question 2
-            QuizQuestions[1, 1] = "Through contact with blood of an infected person";//Answer
+            QuizQuestions[1, 1] = "Through contact with sweat of an infected person.";//Answer
             QuizQuestions[1, 2] = "Through contact with saliva, vaginal or menstrual fluid of an infected person.";//Option
             QuizQuestions[1, 3] = "Through contact with sweat of an infected person.";//Option
             QuizQuestions[1, 4] = "Through contact with blood of an infected person";//Option

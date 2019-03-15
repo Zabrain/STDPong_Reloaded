@@ -47,7 +47,11 @@ public class SharpObject : MonoBehaviour {
                 MovingStuffRB.velocity = Vector2.zero;
             }
         }
-           
+        else
+        {
+            MovingStuffRB.velocity = Vector2.zero;
+        }
+
     }
 
     void MakeSTDBulletMove()

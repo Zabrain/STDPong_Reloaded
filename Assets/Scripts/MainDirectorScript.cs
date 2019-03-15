@@ -103,11 +103,11 @@ public class MainDirectorScript : MonoBehaviour {
     {
         IsGamePaused=true;
     }
+
     public void ResumeGame() //pauses the game
     {
         IsGamePaused = false;
     }
-
     public void MainMenu()
     {
         SceneManager.LoadScene("MainMenu");
@@ -118,4 +118,9 @@ public class MainDirectorScript : MonoBehaviour {
         SceneManager.LoadScene("Leaderboards");
     }
 
+
+    public void HelpGame() //pauses the game
+    {
+        IsGamePaused = true;
+    }
 }

@@ -48,6 +48,10 @@ public class UnProtectedSex : MonoBehaviour {
                 MovingStuffRB.velocity = Vector2.zero;
             }
         }
+        else
+        {
+            MovingStuffRB.velocity = Vector2.zero;
+        }
 
     }
 

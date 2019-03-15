@@ -49,6 +49,10 @@ public class Abstinence : MonoBehaviour {
                 MovingStuffRB.velocity = Vector2.zero;
             }
         }
+        else
+        {
+            MovingStuffRB.velocity = Vector2.zero;
+        }
     }
 
     void MakePoweupMove()

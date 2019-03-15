@@ -64,7 +64,7 @@ public class Leaderboard : MonoBehaviour {
             {
                 HighScoreNames[i].text += highscoreList[i].uname + " : ";
                 HighScoreTexts[i].text = highscoreList[i].playerscore.ToString();
-            }
+            }                        
         }
     }
 
