@@ -48,6 +48,22 @@ public class MainDirectorScript : MonoBehaviour {
             //end all playerprefs to instantiate
 
             PlayerPrefs.SetInt("PlayedBefore",1); //make played
+
+
+
+            //Data to be stored
+            //For how may times level played
+            PlayerPrefs.SetInt("ScabiesPlayed", 0);
+            PlayerPrefs.SetInt("GenitalWartsPlayed", 0);
+            PlayerPrefs.SetInt("HerpesPlayed", 0);
+            PlayerPrefs.SetInt("TrichomoniasisPlayed", 0);
+            PlayerPrefs.SetInt("HepatitsbPlayed", 0);
+            PlayerPrefs.SetInt("ChlamydiaPlayed", 0);
+            PlayerPrefs.SetInt("SyphilisPlayed", 0);
+            PlayerPrefs.SetInt("GonorrheaPlayed", 0);
+            PlayerPrefs.SetInt("HIVPlayed", 0);
+            PlayerPrefs.SetInt("AIDSPlayed", 0);
+            
         }
 
         //PlayerPrefs.SetInt("CurrentLevel", 10);

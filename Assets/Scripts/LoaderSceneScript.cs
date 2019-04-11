@@ -40,6 +40,10 @@ public class LoaderSceneScript : MonoBehaviour {
     {
         StartCoroutine(LoadSceneAsynchronously("StartingAnimation"));
     }
+    public void LoadSceneRewards() //load mainplay
+    {
+        StartCoroutine(LoadSceneAsynchronously("RewardsScene"));
+    }
 
     IEnumerator LoadSceneAsynchronously(string SceneToLoad)
     {

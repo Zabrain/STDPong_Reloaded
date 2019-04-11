@@ -100,7 +100,10 @@ public class StdPongPlayScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        
+
+        //check for level and Increase times played
+        CheckForTimesPlayed();
+
     }
 	
 	// Update is called once per frame
@@ -241,6 +244,7 @@ public class StdPongPlayScript : MonoBehaviour {
 
             StoreHighScore();
 
+            PlayerPrefs.GetInt("WinForReward", 0);//set reward state
 
             SceneManager.LoadScene("GLossSceneForGlobal");            
         }
@@ -262,6 +266,8 @@ public class StdPongPlayScript : MonoBehaviour {
             WinPanel_Object.SetActive(true);//open win panel
 
             StoreHighScore();
+
+            PlayerPrefs.GetInt("WinForReward", 1);//set reward state
 
             MyAudioManager.myAudioClipsSFXs[3].Play();
 
@@ -356,5 +362,49 @@ public class StdPongPlayScript : MonoBehaviour {
 
     }
 
+    void CheckForTimesPlayed() //ckecking times plyed
+    {
+        if (intLevel ==1)
+        {
+            PlayerPrefs.SetInt("ScabiesPlayed", PlayerPrefs.GetInt("ScabiesPlayed") + 1);
+        }
+        else if (intLevel == 2)
+        {
+            PlayerPrefs.SetInt("GenitalWartsPlayed", PlayerPrefs.GetInt("GenitalWartsPlayed") + 1);
+        }
+        else if (intLevel == 3)
+        {
+            PlayerPrefs.SetInt("HerpesPlayed", PlayerPrefs.GetInt("HerpesPlayed") + 1);
+        }
+        else if (intLevel == 4)
+        {
+            PlayerPrefs.SetInt("TrichomoniasisPlayed", PlayerPrefs.GetInt("TrichomoniasisPlayed") + 1);
+        }
+        else if (intLevel == 5)
+        {
+            PlayerPrefs.SetInt("HepatitsbPlayed", PlayerPrefs.GetInt("HepatitsbPlayed") + 1);
+        }
+        else if (intLevel == 6)
+        {
+            PlayerPrefs.SetInt("ChlamydiaPlayed", PlayerPrefs.GetInt("ChlamydiaPlayed") + 1);
+        }
+        else if (intLevel == 7)
+        {
+            PlayerPrefs.SetInt("SyphilisPlayed", PlayerPrefs.GetInt("SyphilisPlayed") + 1);
+        }
+        else if (intLevel == 8)
+        {
+            PlayerPrefs.SetInt("GonorrheaPlayed", PlayerPrefs.GetInt("GonorrheaPlayed") + 1);
+        }
+        else if (intLevel == 9)
+        {
+            PlayerPrefs.SetInt("HIVPlayed", PlayerPrefs.GetInt("HIVPlayed") + 1);
+        }
+        else if (intLevel == 10)
+        {
+            PlayerPrefs.SetInt("AIDSPlayed", PlayerPrefs.GetInt("AIDSPlayed") + 1);
+        }
+        
+    }
     
 }

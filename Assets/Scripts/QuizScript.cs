@@ -188,18 +188,23 @@ public class QuizScript : MonoBehaviour {
             //increase level 
             if (PlayerPrefs.GetInt("CurrentLevel") < 10) //if game hasn't finised
             {
+                PlayerPrefs.GetInt("WinForReward", 1);//set reward state beforee calling reward
+
                 int newLevel = PlayerPrefs.GetInt("CurrentLevel") + 1;
                 PlayerPrefs.SetInt("CurrentLevel", newLevel);
 
                 MainQuizPane.SetActive(false);
                 LoadingPane.SetActive(true);
-                LoadingPane.GetComponent<LoaderSceneScript>().LoadSceneSTDPlay(); //call the loader
+                LoadingPane.GetComponent<LoaderSceneScript>().LoadSceneRewards(); //call the loader
             }
             else //if game has finished
             {
+                PlayerPrefs.GetInt("WinForReward", 2);//set reward state beforee calling reward (Fisnished Game)
+
                 MainQuizPane.SetActive(false);
                 LoadingPane.SetActive(true);
-                LoadingPane.GetComponent<LoaderSceneScript>().LoadSceneFinishStoryMode(); //call the loader
+
+                LoadingPane.GetComponent<LoaderSceneScript>().LoadSceneRewards(); //call the loader
             }
         }
         else if (PlayerPrefs.GetString("SelectedMode") == "ArcadeMode")
@@ -212,9 +217,12 @@ public class QuizScript : MonoBehaviour {
 
     public void ProceedLoseQuiz()
     {
+        PlayerPrefs.GetInt("WinForReward", 0);//set reward state beforee calling reward
+
         MainQuizPane.SetActive(false);
         LoadingPane.SetActive(true);
-        LoadingPane.GetComponent<LoaderSceneScript>().LoadSceneSTDLose(); //call the loader
+
+        LoadingPane.GetComponent<LoaderSceneScript>().LoadSceneRewards(); //call the loader
     }
 
 
