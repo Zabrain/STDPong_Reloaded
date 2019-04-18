@@ -232,6 +232,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 772ce73c211ce1c4a8c95fcddcc2e4d7, type: 3}
   - {fileID: 21300000, guid: b27e0c1fd7610554d91f0599318a3c85, type: 3}
   - {fileID: 21300000, guid: 04745efc08e7d34458da45fcbe612bf8, type: 3}
+  QuickVictoryImage: {fileID: 841157276}
+  FlawlessVictoryImage: {fileID: 2138443198}
   QuickVictoryObject: {fileID: 1163291153}
   FlawlessVictoryObject: {fileID: 2138574712}
   CollectorObject: {fileID: 1645645982}
@@ -382,7 +384,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 5e2120a5b31583848846d9ae8b75e3b2,
+      objectReference: {fileID: 21300000, guid: 6dce71882ebfffa4e9f0daeeefecba41,
         type: 3}
     - target: {fileID: 1661574297113783271, guid: b18448c84ff23fb449ebea426158c16c,
         type: 3}
@@ -413,6 +415,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661574298659629088, guid: b18448c84ff23fb449ebea426158c16c,
+        type: 3}
+      propertyPath: m_Name
+      value: FlawlessVictoryImage
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b18448c84ff23fb449ebea426158c16c, type: 3}
@@ -1129,7 +1136,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a3a9af02ab074c64db5cac5019c579f7,
+      objectReference: {fileID: 21300000, guid: cf3fea6f052c62146844202ddf7d5aed,
         type: 3}
     - target: {fileID: 1661574297113783271, guid: b18448c84ff23fb449ebea426158c16c,
         type: 3}
@@ -1160,9 +1167,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661574298659629088, guid: b18448c84ff23fb449ebea426158c16c,
+        type: 3}
+      propertyPath: m_Name
+      value: QuickVictoryImage
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b18448c84ff23fb449ebea426158c16c, type: 3}
+--- !u!114 &841157276 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1661574298659629094, guid: b18448c84ff23fb449ebea426158c16c,
+    type: 3}
+  m_PrefabInstance: {fileID: 821561451}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &841190368 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1661574298514074964, guid: b18448c84ff23fb449ebea426158c16c,
@@ -1418,21 +1442,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114361650049980820, guid: 3e94197eb9963ec44b3d4b309691f385,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 387655743}
-    - target: {fileID: 114361650049980820, guid: 3e94197eb9963ec44b3d4b309691f385,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: NextReward
-      objectReference: {fileID: 0}
-    - target: {fileID: 114361650049980820, guid: 3e94197eb9963ec44b3d4b309691f385,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -1452,6 +1461,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.characterCount
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361650049980820, guid: 3e94197eb9963ec44b3d4b309691f385,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 387655743}
+    - target: {fileID: 114361650049980820, guid: 3e94197eb9963ec44b3d4b309691f385,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextReward
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361650049980820, guid: 3e94197eb9963ec44b3d4b309691f385,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e94197eb9963ec44b3d4b309691f385, type: 3}
@@ -1872,6 +1896,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1990152049}
   m_CullTransparentMesh: 0
+--- !u!114 &2138443198 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1661574298659629094, guid: b18448c84ff23fb449ebea426158c16c,
+    type: 3}
+  m_PrefabInstance: {fileID: 418977858}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2138574712 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1661574298514074964, guid: b18448c84ff23fb449ebea426158c16c,

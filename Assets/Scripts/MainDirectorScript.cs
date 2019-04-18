@@ -49,6 +49,13 @@ public class MainDirectorScript : MonoBehaviour {
 
             PlayerPrefs.SetInt("PlayedBefore",1); //make played
 
+            //Instantiate all pretest and posttest prefabs
+            for (int i=1; i<11; i++)
+            {
+                PlayerPrefs.SetInt(LevelNames[i] + "Pretest", -1);
+                PlayerPrefs.SetInt(LevelNames[i] + "PostTest", -1);
+            }
+
 
 
             //Data to be stored

@@ -44,6 +44,10 @@ public class LoaderSceneScript : MonoBehaviour {
     {
         StartCoroutine(LoadSceneAsynchronously("RewardsScene"));
     }
+    public void LoadPretest() //load prerest
+    {
+        StartCoroutine(LoadSceneAsynchronously("PreQuizScene"));
+    }
 
     IEnumerator LoadSceneAsynchronously(string SceneToLoad)
     {

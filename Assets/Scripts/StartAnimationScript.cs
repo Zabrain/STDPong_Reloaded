@@ -95,7 +95,7 @@ public class StartAnimationScript : MonoBehaviour {
             SelectorImage.SetActive(false);
             SelectPane.SetActive(false);
             LoadingPane.SetActive(true);
-            LoadingPane.GetComponent<LoaderSceneScript>().LoadSceneSTDPlay(); //call the loader
+            LoadingPane.GetComponent<LoaderSceneScript>().LoadPretest(); //call the loader
 
 
             //Debug.Log(PlayerPrefs.GetString("Nationality") + "   " + PlayerPrefs.GetString("PlayerSex"));
@@ -104,11 +104,11 @@ public class StartAnimationScript : MonoBehaviour {
         {
             PlayerPrefs.SetString("CurrentScene", "StdPongPlay");//sets the next scene
             PlayerPrefs.SetString("SelectedPlayer", "Ada");//Player Selected (Ada or Obi)
-
+           
             SelectorImage.SetActive(false);
             SelectPane.SetActive(false);
             LoadingPane.SetActive(true);
-            LoadingPane.GetComponent<LoaderSceneScript>().LoadSceneSTDPlay(); //call the loader
+            LoadingPane.GetComponent<LoaderSceneScript>().LoadPretest(); //call the loader
         }
         else
         {

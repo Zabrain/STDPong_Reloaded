@@ -1,17 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class QuizScript : MonoBehaviour {
-    
+public class PreQuizScreen : MonoBehaviour
+{
+    public TextMeshProUGUI FirstlyLetsText;
+    public GameObject AnswerAll5QuestObject;
+    public Transform TransformIntroPositn;
+    bool MoveIntro=false;
+
+
     public Sprite[] EnemySprites;
     public Image EnemyImage;
-
-    public Slider QuestionMeterSlider;
-    float QuestionMeterValue;
+    
+    int QuestionsAnswered;
     public Button TheAButton;
     public TextMeshProUGUI TheAText;
     public Button TheBButton;
@@ -20,13 +25,7 @@ public class QuizScript : MonoBehaviour {
     public TextMeshProUGUI TheCText;
     public TextMeshProUGUI TheQuestionNumber;
     public TextMeshProUGUI TheQuestion;
-    public TextMeshProUGUI ExplainedAnswer;
-    public GameObject WrongImg;
-    public GameObject CorrectImg;
-    public GameObject CorrectOrWrongPanel;
-    public TextMeshProUGUI CorrectOrWrongText;
     public TextMeshProUGUI STDNameText;
-    int QuestionsAnswered = 0;
 
     public GameObject QuestAndAnswerPanel;
     public bool MoveQuestOut = false;
@@ -51,34 +50,53 @@ public class QuizScript : MonoBehaviour {
 
     int intLevel;//current level
 
-    // Use this for initialization
-    void Start () {
-
-        STDNameText.text = MainDirectorScript.strLevel;//load the name of the current std
-
+    void Awake()
+    {
         intLevel = MainDirectorScript.intLevel;//get the current level
 
+        if (PlayerPrefs.GetInt(MainDirectorScript.LevelNames[intLevel] + "Pretest") != -1) //if pretest is done already
+        {
+            SceneManager.LoadScene("StdPongPlay");
+        }
+    }
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        FirstlyLetsText.text = "Firstly, Let's Test Your Knowledge of "+ MainDirectorScript.strLevel; // on intro
+
+
+        STDNameText.text = MainDirectorScript.strLevel;//load the name of the current std
+          
         RenderTheEnemySprite();
 
-        QuestionMeterValue = 1;
-        QuestionMeterSlider.value = QuestionMeterValue; //value of the std meter
+        QuestionsAnswered = 0;
 
         CurrentQuestion = 0; //buffer for the current question
 
         LoadQuestionArrays(); //load the appropriate questions
+
         AttachQuestionAndNumber(); //attach question
 
-        
+        Debug.Log(PlayerPrefs.GetInt("ScabiesPretest"));
     }
-	
-	// Update is called once per frame
-	void Update () {
-        
 
-        QuestionMeterSlider.value = QuestionMeterValue; //value of the std meter
-        
-
+    // Update is called once per frame
+    void Update()
+    {
+        if (MoveIntro == true) //move intro screen away
+        {
+            AnswerAll5QuestObject.transform.position = Vector2.Lerp(AnswerAll5QuestObject.transform.position, TransformIntroPositn.position, 5 * Time.deltaTime);
+        }
     }
+
+    public void NextTranspButton() //Changes boolen that moves the intro screen away
+    {
+        MoveIntro = true;
+    }
+
+
 
     public void AButton_Click()
     {
@@ -110,125 +128,34 @@ public class QuizScript : MonoBehaviour {
             TheAText.text = QuizQuestions[CurrentQuestion, 2].ToString();//Load the Options
             TheBText.text = QuizQuestions[CurrentQuestion, 3].ToString();//Load the Options
             TheCText.text = QuizQuestions[CurrentQuestion, 4].ToString();//Load the Options
-            ExplainedAnswer.text = QuizQuestions[CurrentQuestion, 5].ToString();//Load the explained answer;
         }
     }
 
     void AnswerChecker(string myAnswer) //check if answer is correct
     {
-        CorrectOrWrongPanel.SetActive(true);//show the explain answer panel
-
-        if (CurrentQuestion < 5)
+        if (CurrentQuestion < 4)
         {
             if (myAnswer == QuizQuestions[CurrentQuestion, 1]) //if answer is correct 
             {
-                CorrectOrWrongText.text = "CORRECT";
-
-                QuestionsAnswered += 1; //COunt for correct answers
-
-                PlayerPrefs.SetInt("CurrentScore", PlayerPrefs.GetInt("CurrentScore") + 5);
-
-                CorrectImg.SetActive(true);//show right image
-                WrongImg.SetActive(false);
-                MyAudioManager.myAudioClipsSFXs[3].Play();
-                QuestionMeterValue -= .20f; //reduce bar
+                QuestionsAnswered += 1;
             }
-            else
-            {
-                CorrectOrWrongText.text = "WRONG";
-                CorrectImg.SetActive(false);//show wrong image
-                MyAudioManager.myAudioClipsSFXs[2].Play();
-                WrongImg.SetActive(true);
-            }
+            CurrentQuestion += 1; //Increase question number
+            AttachQuestionAndNumber(); //Attache new question
         }
-       
-
+        else //Pretest Finish (Store value in database) !!!!!!!!!!!!!!!!DATA
+        {
+            PlayerPrefs.SetInt(MainDirectorScript.strLevel+"Pretest", QuestionsAnswered);
+            SceneManager.LoadScene("StdPongPlay");
+        }
 
     }
-
-   
-
+    
     void RenderTheEnemySprite()
     {
         EnemyImage.sprite = EnemySprites[intLevel];
     }
 
-    public void NextButton() //next question
-    {
-
-        CurrentQuestion += 1; //increase the question number
-        AttachQuestionAndNumber(); //attach question
-
-        if (CurrentQuestion >= 5) //question has finished
-        {
-            PlayerPrefs.SetInt(MainDirectorScript.strLevel + "PostTest", QuestionsAnswered);
-
-            if (QuestionsAnswered < 4)//less than 4 questions answered
-            {
-                //PlayerPrefs.SetFloat("MyEnemyHealth", 0.4f); //reduce enemy health
-
-                MyAudioManager.myAudioClipsSFXs[2].Play();
-                LoseQuizPanel.SetActive(true);//activate lose panel
-
-                //SceneManager.LoadScene("StdPongPlay");
-            }
-            else //all questions answered
-            {
-                PlayerPrefs.SetFloat("MyEnemyHealth", 1f); //normalize enemy health
-                
-                MyAudioManager.myAudioClipsSFXs[3].Play(); //
-                WinQuizPanel.SetActive(true);//activate win panel
-                
-            }
-
-        }
-    }
     
-    public void ProceedWinQuiz()
-    {
-        if (PlayerPrefs.GetString("SelectedMode") == "StoryMode")
-        {
-            //increase level 
-            if (PlayerPrefs.GetInt("CurrentLevel") < 10) //if game hasn't finised
-            {
-                PlayerPrefs.SetInt("WinForReward", 1);//set reward state beforee calling reward (Tell reward scene to load the win scene)
-
-                int newLevel = PlayerPrefs.GetInt("CurrentLevel") + 1;
-                PlayerPrefs.SetInt("CurrentLevel", newLevel);
-
-                MainQuizPane.SetActive(false);
-                LoadingPane.SetActive(true);
-                LoadingPane.GetComponent<LoaderSceneScript>().LoadSceneRewards(); //call the loader
-            }
-            else //if game has finished
-            {
-                PlayerPrefs.SetInt("WinForReward", 2);//set reward state beforee calling reward (Tell reward scene to load the FINISHED scene)
-
-                MainQuizPane.SetActive(false);
-                LoadingPane.SetActive(true);
-
-                LoadingPane.GetComponent<LoaderSceneScript>().LoadSceneRewards(); //call the loader
-            }
-        }
-        else if (PlayerPrefs.GetString("SelectedMode") == "ArcadeMode")
-        {
-
-        }
-
-
-    }
-
-    public void ProceedLoseQuiz()
-    {
-        PlayerPrefs.SetInt("WinForReward", 0);//set reward state beforee calling reward (Tell reward scene to load the lose scene)
-
-        MainQuizPane.SetActive(false);
-        LoadingPane.SetActive(true);
-
-        LoadingPane.GetComponent<LoaderSceneScript>().LoadSceneRewards(); //call the loader
-    }
-
-
     void LoadQuestionArrays() //Make the changes in prequiz also
     {
         if (MainDirectorScript.strLevel == "Scabies")
@@ -347,7 +274,7 @@ public class QuizScript : MonoBehaviour {
             QuizQuestions[4, 5] = "To find out if you have genital herpes, a doctor can take a sample from a sore and test it in the laboratory. There is also a blood test that looks for antibodies to the virus that your immune system would have made. HSV-2 almost always infects the genitals, so if antibodies to HSV-2 are detected in your blood, you probably have genital herpes.";//Explained Answer
 
         }
-        
+
         else if (MainDirectorScript.strLevel == "Trichomoniasis")
         {
             QuizQuestions[0, 0] = "Which of these is a symptom of Trichomoniasis?";//Question 1

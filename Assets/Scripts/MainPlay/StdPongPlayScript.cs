@@ -61,6 +61,10 @@ public class StdPongPlayScript : MonoBehaviour {
     public GameObject MainGamePane;
     public GameObject AllCanvasExceptLoadPane;
 
+
+    float GameTimer;
+
+
     private void Awake()
     {
         intLevel = MainDirectorScript.intLevel; //get level values
@@ -103,7 +107,7 @@ public class StdPongPlayScript : MonoBehaviour {
 
         //check for level and Increase times played
         CheckForTimesPlayed();
-
+        
     }
 	
 	// Update is called once per frame
@@ -111,6 +115,8 @@ public class StdPongPlayScript : MonoBehaviour {
 
         if (MainDirectorScript.IsGamePaused == false && MainDirectorScript.boolLeveleStart == true)
         {
+            GameTimer += Time.deltaTime; //game timer
+
             CheckForFiringBullet(); //starts the std bullet counter and check for delay time
             CheckForFiringPowerup(); // starts the powerup counter and check for delay time
 
@@ -162,6 +168,21 @@ public class StdPongPlayScript : MonoBehaviour {
                 CurrentPlayerScore.text = lastScore.ToString();
             }
         }
+    }
+
+    void CheckForRewards() //data!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    {
+        if (GameTimer < 61) //save the appropriate Quick Victory
+        {
+            PlayerPrefs.SetInt(MainDirectorScript.strLevel + "QuickVictory", PlayerPrefs.GetInt(MainDirectorScript.strLevel+"QuickVictory") + 1);
+
+        }
+
+        if (MyPlayerHealth >= 1f)
+        {
+            PlayerPrefs.SetInt(MainDirectorScript.strLevel + "FlawlessVictory", PlayerPrefs.GetInt(MainDirectorScript.strLevel + "FlawlessVictory") + 1);
+        }
+        
     }
 
     //The two functions below handles the Powerups fire
@@ -261,7 +282,9 @@ public class StdPongPlayScript : MonoBehaviour {
     void CPULoses()
     {
         if (MyEnemyHealth <= 0f)
-        {           
+        {
+            CheckForRewards();//checks if player has quick victory
+
             MainDirectorScript.boolLeveleStart = false;//pause the game
             WinPanel_Object.SetActive(true);//open win panel
 

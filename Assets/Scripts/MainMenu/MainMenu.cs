@@ -29,7 +29,7 @@ public class MainMenu : MonoBehaviour {
     public void StoryModeContinue()
     {
         PlayerPrefs.SetString("SelectedMode", "StoryMode");
-        SceneManager.LoadScene("StdPongPlay");
+        SceneManager.LoadScene("PreQuizScene"); //checks if pretest has been done or not
 
         PlayerPrefs.SetFloat("MyEnemyHealth", 1f); //normalize enemy health
     }
