@@ -96,10 +96,17 @@ public class StdPongPlayScript : MonoBehaviour {
        MyPlayerImmuneSlider.value = MyPlayerHealth;
         MyEnemyImmuneSlider.value = MyEnemyHealth;
 
-        intCurrentPlayerScore = PlayerPrefs.GetInt("CurrentScore"); //get current player score
 
-
+        if (PlayerPrefs.GetString("SelectedMode") == "StoryMode")
+        {
+            intCurrentPlayerScore = PlayerPrefs.GetInt("CurrentScore"); //get current player score
+        }
+        else if (PlayerPrefs.GetString("SelectedMode") == "ArcadeMode")
+        {
+            intCurrentPlayerScore = 0; //get current player score
+        }
         
+                
     }
 
     // Use this for initialization
@@ -303,7 +310,7 @@ public class StdPongPlayScript : MonoBehaviour {
         PlayerPrefs.SetInt("CurrentScore", intCurrentPlayerScore); //local storage
 
         //try to store highscore online
-        gameObject.GetComponent<GrabHighScoresScript>().AddHighScore(PlayerPrefs.GetString("NickName"), intCurrentPlayerScore);
+        gameObject.GetComponent<GrabHighScoresScript>().PutInAllData();
     }
 
     public void GotoSTDScroll()

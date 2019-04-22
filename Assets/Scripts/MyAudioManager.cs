@@ -41,7 +41,7 @@ public class MyAudioManager : MonoBehaviour {
         if (stageName == "MainMenu")
         {
             MainMenuSoundInst();
-            Debug.Log("1");
+            //Debug.Log("1");
         }
         else
         {
@@ -68,7 +68,7 @@ public class MyAudioManager : MonoBehaviour {
         myAudioClipsSFXs[0] = Instantiate(ClickButtonSFX);//Instantiate button click
 
 
-        Debug.Log("1");
+        //Debug.Log("1");
 
         //adjust the volumes of all the music and SFX if they exist(themes)
         SetVolumeOfThemesGeneral();

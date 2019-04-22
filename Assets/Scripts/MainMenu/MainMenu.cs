@@ -8,11 +8,28 @@ public class MainMenu : MonoBehaviour {
 
     public TextMeshProUGUI ListPlayers;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    public GameObject ContinueBtnObject;
+    public GameObject ContinueBtnDisabledObject;
+
+    // Use this for initialization
+    void Start () {
+
+        if (PlayerPrefs.GetInt("ScabiesPlayed") > 0) //if scabies has not been played disable continue
+        {
+            ContinueBtnObject.SetActive(true);
+            ContinueBtnDisabledObject.SetActive(false);
+        }
+        else
+        {
+            ContinueBtnObject.SetActive(false);
+            ContinueBtnDisabledObject.SetActive(true);
+        }
+        
+    }
 	
+
+
+
 	// Update is called once per frame
 	void Update () {
 		
@@ -47,4 +64,5 @@ public class MainMenu : MonoBehaviour {
         ListPlayers.text = PlayerPrefs.GetString("AllUsers");
     }
 
+    
 }

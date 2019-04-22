@@ -163,6 +163,9 @@ public class QuizScript : MonoBehaviour {
         {
             PlayerPrefs.SetInt(MainDirectorScript.strLevel + "PostTest", QuestionsAnswered);
 
+            //try to store highscore online
+            gameObject.GetComponent<GrabHighScoresScript>().PutInAllData();
+
             if (QuestionsAnswered < 4)//less than 4 questions answered
             {
                 //PlayerPrefs.SetFloat("MyEnemyHealth", 0.4f); //reduce enemy health

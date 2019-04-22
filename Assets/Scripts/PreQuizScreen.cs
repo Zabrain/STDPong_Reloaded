@@ -145,6 +145,10 @@ public class PreQuizScreen : MonoBehaviour
         else //Pretest Finish (Store value in database) !!!!!!!!!!!!!!!!DATA
         {
             PlayerPrefs.SetInt(MainDirectorScript.strLevel+"Pretest", QuestionsAnswered);
+
+            //try to store highscore online
+            gameObject.GetComponent<GrabHighScoresScript>().PutInAllData();
+
             SceneManager.LoadScene("StdPongPlay");
         }
 

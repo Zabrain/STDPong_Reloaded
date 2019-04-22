@@ -65,7 +65,7 @@ public class StoryAnimaScript : MonoBehaviour {
 
         }
 
-       Debug.Log(StoryImages[0].transform.position.x + "   " + ImageOutPosition.position.x + boolNextText ); 
+       //Debug.Log(StoryImages[0].transform.position.x + "   " + ImageOutPosition.position.x + boolNextText ); 
             
 
     }

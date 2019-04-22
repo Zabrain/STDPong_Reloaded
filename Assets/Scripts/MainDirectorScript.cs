@@ -25,7 +25,7 @@ public class MainDirectorScript : MonoBehaviour {
             //HighScore Database Upload marker
             PlayerPrefs.SetInt("DBUpload", 0);
 
-
+            PlayerPrefs.SetString("AllOtherData", "Fresh");
 
             //add all playerprefs to instantiate
             PlayerPrefs.SetString("SelectedMode", "Something"); //Arcade or Story

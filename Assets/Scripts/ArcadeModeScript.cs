@@ -51,7 +51,7 @@ public class ArcadeModeScript : MonoBehaviour
 
     public void ScabiesSTD()
     {
-        PlayerPrefs.SetInt("ArcadeLevel",1);//set the Arcade level
+        PlayerPrefs.SetInt("ArcadeLevel", 1);//set the Arcade level
         LoadTheSTDPongPlay();
     }
     public void GenitalWartsSTD()
