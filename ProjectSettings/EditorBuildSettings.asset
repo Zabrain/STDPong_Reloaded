@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/StdPongPlay.unity
     guid: 5e5dd9f8b93e6d24f93ad34007acb6b0
   - enabled: 1
+    path: Assets/Scenes/ArcadeMode.unity
+    guid: 64975ce3728315d4d9c8e0c37687d8c5
+  - enabled: 1
     path: Assets/Scenes/STDScroll.unity
     guid: a646ed9aeff361540a6cd1df03261eb3
   - enabled: 1

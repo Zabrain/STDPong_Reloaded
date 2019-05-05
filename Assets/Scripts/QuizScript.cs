@@ -39,6 +39,8 @@ public class QuizScript : MonoBehaviour {
 
     int CurrentQuestion;
 
+    int TotalIntialQuestsAns;
+
     string[,] QuizQuestions = new string[5, 6];
     //string[,] AIDSQuestions = new string [5,2];
     //string[,] HIVQuestions = new string[5, 2];
@@ -68,16 +70,17 @@ public class QuizScript : MonoBehaviour {
         LoadQuestionArrays(); //load the appropriate questions
         AttachQuestionAndNumber(); //attach question
 
-        
+        PlayerPrefs.SetInt(MainDirectorScript.strLevel + "QuizDone", PlayerPrefs.GetInt(MainDirectorScript.strLevel + "QuizDone")+1); //count times quiz played
+
+        TotalIntialQuestsAns = PlayerPrefs.GetInt("Total Questions Answered");
+
     }
 	
 	// Update is called once per frame
 	void Update () {
         
-
         QuestionMeterSlider.value = QuestionMeterValue; //value of the std meter
         
-
     }
 
     public void AButton_Click()
@@ -126,7 +129,10 @@ public class QuizScript : MonoBehaviour {
 
                 QuestionsAnswered += 1; //COunt for correct answers
 
-                PlayerPrefs.SetInt("CurrentScore", PlayerPrefs.GetInt("CurrentScore") + 5);
+                if (PlayerPrefs.GetString("SelectedMode") == "StoryMode") //only store score if mode is story mode
+                {
+                    PlayerPrefs.SetInt("CurrentScore", PlayerPrefs.GetInt("CurrentScore") + 5);
+                }                    
 
                 CorrectImg.SetActive(true);//show right image
                 WrongImg.SetActive(false);
@@ -144,9 +150,7 @@ public class QuizScript : MonoBehaviour {
        
 
 
-    }
-
-   
+    }   
 
     void RenderTheEnemySprite()
     {
@@ -161,10 +165,20 @@ public class QuizScript : MonoBehaviour {
 
         if (CurrentQuestion >= 5) //question has finished
         {
-            PlayerPrefs.SetInt(MainDirectorScript.strLevel + "PostTest", QuestionsAnswered);
+            if (PlayerPrefs.GetInt(MainDirectorScript.strLevel + "PostTest")< QuestionsAnswered)
+            {
+                PlayerPrefs.SetInt(MainDirectorScript.strLevel + "PostTest", QuestionsAnswered);
+            }
+            
 
-            //try to store highscore online
-            gameObject.GetComponent<GrabHighScoresScript>().PutInAllData();
+            CheckForPantAndPoly(); //checks to update rewards
+
+            if (PlayerPrefs.GetString("SelectedMode") == "StoryMode") //only store score if mode is story mode
+            {
+                //try to store highscore online
+                gameObject.GetComponent<GrabHighScoresScript>().PutInAllData();
+            }
+                                                                      
 
             if (QuestionsAnswered < 4)//less than 4 questions answered
             {
@@ -172,6 +186,7 @@ public class QuizScript : MonoBehaviour {
 
                 MyAudioManager.myAudioClipsSFXs[2].Play();
                 LoseQuizPanel.SetActive(true);//activate lose panel
+                
 
                 //SceneManager.LoadScene("StdPongPlay");
             }
@@ -187,6 +202,35 @@ public class QuizScript : MonoBehaviour {
         }
     }
     
+    void CheckForPantAndPoly()
+    {
+        if (PlayerPrefs.GetInt(MainDirectorScript.strLevel + "QuizDone") == 1) //check if this is the first time
+        {
+            PlayerPrefs.SetInt("Total Questions Answered", TotalIntialQuestsAns + QuestionsAnswered);
+
+            //for PolyMath
+            if (TotalIntialQuestsAns < 20) //check if polymath has been shown
+            {
+                if (PlayerPrefs.GetInt("Total Questions Answered") >= 20)
+                {
+                    PlayerPrefs.SetInt("STDPolyMathCurrent", 1); //for reward scene
+                    PlayerPrefs.SetInt("TheSTDPolyMath", 1); //for Data
+                }
+            }
+            //for Panthomath
+            else if (TotalIntialQuestsAns < 40) //check if panthomath has been shown
+            {
+                if (PlayerPrefs.GetInt("Total Questions Answered") >= 40)
+                {
+                    PlayerPrefs.SetInt("STDPantoMathCurrent", 1); //for reward scene
+                    PlayerPrefs.SetInt("TheSTDPantoMath", 1); //for Data
+                }
+            }
+
+        }
+
+    }
+
     public void ProceedWinQuiz()
     {
         if (PlayerPrefs.GetString("SelectedMode") == "StoryMode")
@@ -390,7 +434,7 @@ public class QuizScript : MonoBehaviour {
 
         }
 
-        else if (MainDirectorScript.strLevel == "Hepatits B")
+        else if (MainDirectorScript.strLevel == "Hepatitis B")
         {
             QuizQuestions[0, 0] = "Hepatitis B can be transmitted from mother to baby at birth?";//Question 1
             QuizQuestions[0, 1] = "Yes. It can be transferred.";//Answer

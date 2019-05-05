@@ -689,7 +689,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -13.9, y: 0.0000061172536}
+  m_AnchoredPosition: {x: -13.9, y: -0.000013984113}
   m_SizeDelta: {x: 599, y: 872}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &544008910
@@ -1190,6 +1190,7 @@ GameObject:
   - component: {fileID: 754626806}
   - component: {fileID: 754626805}
   - component: {fileID: 754626808}
+  - component: {fileID: 754626809}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1271,6 +1272,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d97682fbf34ddf04889a2d16b560884b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &754626809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754626804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3e4b445f8d27fd45a85cfb2bfec089e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &794598468
@@ -1389,6 +1402,41 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
+        type: 3}
+      propertyPath: m_text
+      value: Back
+      objectReference: {fileID: 0}
+    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
+        type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 61.65
+      objectReference: {fileID: 0}
     - target: {fileID: 114361650049980820, guid: 3e94197eb9963ec44b3d4b309691f385,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1443,41 +1491,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
-        type: 3}
-      propertyPath: m_text
-      value: Back
-      objectReference: {fileID: 0}
-    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
-        type: 3}
-      propertyPath: m_enableAutoSizing
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 61.65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e94197eb9963ec44b3d4b309691f385, type: 3}
@@ -1818,21 +1831,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.99945766
       objectReference: {fileID: 0}
-    - target: {fileID: 114361650049980820, guid: 3e94197eb9963ec44b3d4b309691f385,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 754626808}
-    - target: {fileID: 114361650049980820, guid: 3e94197eb9963ec44b3d4b309691f385,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DisagreeButton
-      objectReference: {fileID: 0}
-    - target: {fileID: 114361650049980820, guid: 3e94197eb9963ec44b3d4b309691f385,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -1882,6 +1880,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361650049980820, guid: 3e94197eb9963ec44b3d4b309691f385,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 754626808}
+    - target: {fileID: 114361650049980820, guid: 3e94197eb9963ec44b3d4b309691f385,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisagreeButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361650049980820, guid: 3e94197eb9963ec44b3d4b309691f385,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e94197eb9963ec44b3d4b309691f385, type: 3}
@@ -3033,21 +3046,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 114361650049980820, guid: 3e94197eb9963ec44b3d4b309691f385,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 754626808}
-    - target: {fileID: 114361650049980820, guid: 3e94197eb9963ec44b3d4b309691f385,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AgreeButton
-      objectReference: {fileID: 0}
-    - target: {fileID: 114361650049980820, guid: 3e94197eb9963ec44b3d4b309691f385,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -3082,6 +3080,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontSize
       value: 61.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361650049980820, guid: 3e94197eb9963ec44b3d4b309691f385,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 754626808}
+    - target: {fileID: 114361650049980820, guid: 3e94197eb9963ec44b3d4b309691f385,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AgreeButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361650049980820, guid: 3e94197eb9963ec44b3d4b309691f385,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e94197eb9963ec44b3d4b309691f385, type: 3}
@@ -3216,6 +3229,46 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.99945766
       objectReference: {fileID: 0}
+    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
+        type: 3}
+      propertyPath: m_text
+      value: Study Description
+      objectReference: {fileID: 0}
+    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
+        type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 56.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 114361650049980820, guid: 3e94197eb9963ec44b3d4b309691f385,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -3270,46 +3323,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
-        type: 3}
-      propertyPath: m_text
-      value: Study Description
-      objectReference: {fileID: 0}
-    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
-        type: 3}
-      propertyPath: m_enableAutoSizing
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 56.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114438569995991324, guid: 3e94197eb9963ec44b3d4b309691f385,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e94197eb9963ec44b3d4b309691f385, type: 3}

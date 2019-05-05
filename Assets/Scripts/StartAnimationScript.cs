@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Text;
+using System.Text.RegularExpressions;
 
 public class StartAnimationScript : MonoBehaviour {
     public GameObject BackgroundObject; //the object that holds the background sprites
@@ -26,13 +28,28 @@ public class StartAnimationScript : MonoBehaviour {
     public TextMeshProUGUI NickNameWarning;
     public TextMeshProUGUI NationalityDll;
     public TextMeshProUGUI SexDll;
+    public TextMeshProUGUI EmailAddressText;
 
     bool NickNameTyping=false;
+    string  NickNameRand;
 
+    public const string MatchEmailPattern =
+           @"^(([\w-]+\.)+[\w-]+|([a-zA-Z]{1}|[\w-]{2,}))@"
+           + @"((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\.([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\."
+             + @"([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\.([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
+           + @"([a-zA-Z]+[\w-]+\.)+[a-zA-Z]{2,4})$";
+
+    public static bool myIsEmail(string email)
+    {
+        if (email != null) return Regex.IsMatch(email, MatchEmailPattern);
+        else return false;
+    }
     // Use this for initialization
     void Start () {
 
-        PlayerPrefs.SetInt("NickNameIndex", PlayerPrefs.GetInt("NickNameIndex") + 1);//Increase NicknameIndex
+        //PlayerPrefs.SetInt("NickNameIndex", PlayerPrefs.GetInt("NickNameIndex") + 1);//Increase NicknameIndex
+
+        NickNameRand = Random.Range(0, 999).ToString();
 
         RenderTheBackground();
 
@@ -60,7 +77,7 @@ public class StartAnimationScript : MonoBehaviour {
 
         if (NickNameTyping)
         {
-            NickNameWarning.text = NickName.text.Trim() + PlayerPrefs.GetInt("NickNameIndex").ToString();
+            NickNameWarning.text = NickName.text.Trim() + NickNameRand;
         }
         
 
@@ -120,22 +137,36 @@ public class StartAnimationScript : MonoBehaviour {
     public void GoOnNickName() //also resets score and level
     {
 
-        if(NickName.text.Trim() != "" && NationalityDll.text.Trim() != "Select Your Country" && SexDll.text.Trim() != "Select Your Gender")
+        if(NickName.text.Trim() != "" && myIsEmail(EmailAddressText.text.Trim()) != false && SexDll.text.Trim() != "Select Your Gender")
         {
             //try to store nickname in DataBase
-
-            PlayerPrefs.SetString("NickName", NickName.text.Trim()+ PlayerPrefs.GetInt("NickNameIndex").ToString());
-            PlayerPrefs.SetString("Nationality", NationalityDll.text.Trim());
-            PlayerPrefs.SetString("PlayerSex", SexDll.text.Trim() + PlayerPrefs.GetInt("NickNameIndex").ToString());
+            //pick a random Powerup
+            PlayerPrefs.SetString("NickName", NickName.text.Trim() + NickNameRand);
+            PlayerPrefs.SetString("EmailAddress", EmailAddressText.text.Trim());
+            //PlayerPrefs.SetString("Nationality", NationalityDll.text.Trim());
+            if (SexDll.text.Trim() == "Male")   
+            {
+                PlayerPrefs.SetString("PlayerSex", "M");
+            }
+            else if (SexDll.text.Trim() == "Female")
+            {
+                PlayerPrefs.SetString("PlayerSex", "F");
+            }
+            else if (SexDll.text.Trim() == "Other")
+            {
+                PlayerPrefs.SetString("PlayerSex", "O");
+            }
             PlayerPrefs.SetInt("CurrentScore", 0);//reset scores
             PlayerPrefs.SetInt("CurrentLevel", 1);//reset level
-                        
+
+            gameObject.GetComponent<GrabHighScoresScript>().PutInAllData(); //store nickname and sex
+
             NicknamePane.SetActive(false);
             SelectPane.SetActive(true);
         }
         else
         {
-            NickNameWarning.text= "Please, Enter a Nickname";
+            NickNameWarning.text= "Please, Enter a Nickname, Email Address and Gender!";
             NickNameTyping = false;
         }
                
@@ -172,4 +203,6 @@ public class StartAnimationScript : MonoBehaviour {
         BackgroundObject.transform.position = Vector2.zero; // Optional
         BackgroundObject.transform.localScale = scale;
     }
+
+    
 }

@@ -35,6 +35,8 @@ public class PreQuizScreen : MonoBehaviour
 
     public GameObject LoadingPane;
     public GameObject MainQuizPane;
+    public GameObject AnswerAll5Quest;
+    public GameObject CoveringScr;
 
     int CurrentQuestion;
 
@@ -54,9 +56,13 @@ public class PreQuizScreen : MonoBehaviour
     {
         intLevel = MainDirectorScript.intLevel;//get the current level
 
-        if (PlayerPrefs.GetInt(MainDirectorScript.LevelNames[intLevel] + "Pretest") != -1) //if pretest is done already
+        if (PlayerPrefs.GetInt(MainDirectorScript.LevelNames[intLevel] + "Pretest") != 9 || PlayerPrefs.GetString("SelectedMode") != "StoryMode") //if pretest is done already
         {
             SceneManager.LoadScene("StdPongPlay");
+        }
+        else
+        {
+            CoveringScr.SetActive(false);
         }
     }
 
@@ -318,7 +324,7 @@ public class PreQuizScreen : MonoBehaviour
 
         }
 
-        else if (MainDirectorScript.strLevel == "Hepatits B")
+        else if (MainDirectorScript.strLevel == "Hepatitis B")
         {
             QuizQuestions[0, 0] = "Hepatitis B can be transmitted from mother to baby at birth?";//Question 1
             QuizQuestions[0, 1] = "Yes. It can be transferred.";//Answer
@@ -552,7 +558,7 @@ public class PreQuizScreen : MonoBehaviour
             QuizQuestions[4, 5] = "There is no cure for HIV and AIDS yet. However, treatment can control HIV and enable people to live a long and healthy life. If you think you’ve been at risk of HIV, it's important to get tested to find out your HIV status. Testing is the only way to know if you have the virus. If you’ve already been for a test and your result came back positive, you will be advised to start treatment straight away.";//Explained Answer
 
         }
-        //{  "Genital Warts//", "Herpes//", "Trichomoniasis//", "Hepatits B//", "Chlamydia//", "Syphilis//", "Gonorrhea//", "HIV//", "AIDS//" };
+        //{  "Genital Warts//", "Herpes//", "Trichomoniasis//", "Hepatitis B//", "Chlamydia//", "Syphilis//", "Gonorrhea//", "HIV//", "AIDS//" };
 
     }
 

@@ -147,6 +147,9 @@ public class BloodTest : MonoBehaviour {
 
             myBlinkerTextObject.transform.position = PointOutSideScreen; //transform condom blinking text
             MyBlinkerCounter = 0;
+
+
+            PlayerPrefs.SetInt("PowerupCount", PlayerPrefs.GetInt("PowerupCount") + 1); //increase the overall count of powerups
         }
 
 

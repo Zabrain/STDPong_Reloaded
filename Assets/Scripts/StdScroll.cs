@@ -191,7 +191,7 @@ public class StdScroll : MonoBehaviour {
             TreatmentDetail.text = "Adults with gonorrhea are treated with antibiotics prescribed by a Doctor";
             TestDetail.text = "Cell samples, discharge samples, or urine samples";
         }
-        else if (MainDirectorScript.strLevel == "Hepatits B")
+        else if (MainDirectorScript.strLevel == "Hepatitis B")
         {
             AboutDetail.text = "Hepatitis B is a serious liver infection caused by the hepatitis B virus (HBV). For some people, hepatitis B infection becomes chronic, meaning it lasts more than six months. Having chronic hepatitis B increases your risk of developing liver failure, liver cancer or cirrhosis — a condition that permanently scars of the liver..";//about
             SymptomsDetail.text = "Signs and symptoms of hepatitis B range from mild to severe. They usually appear about one to four months after you've been infected, although you could see them as early as two weeks post-infection. Some people, usually young children, may not have any symptoms. Hepatitis B signs and symptoms may include: Abdominal pain, Dark urine, Fever, Joint pain, Loss of appetite, Nausea and vomiting, Weakness and fatigue and Yellowing of your skin and the whites of your eyes(jaundice)"; //symptoms

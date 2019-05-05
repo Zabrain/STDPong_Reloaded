@@ -14,6 +14,7 @@ public class StdPongPlayScript : MonoBehaviour {
 
     public TextMeshProUGUI CurrentPlayerScore;
     public static int intCurrentPlayerScore; //the player score holder
+    public static int intInitialPlayerScore; //score are game stae=rt
     int lastScore=0;
 
     public Transform MyEnemyPosition;
@@ -64,9 +65,11 @@ public class StdPongPlayScript : MonoBehaviour {
 
     float GameTimer;
 
+    int OverallPowerUpNo;
 
     private void Awake()
     {
+        
         intLevel = MainDirectorScript.intLevel; //get level values
         STDName.text = MainDirectorScript.strLevel;
 
@@ -96,10 +99,12 @@ public class StdPongPlayScript : MonoBehaviour {
        MyPlayerImmuneSlider.value = MyPlayerHealth;
         MyEnemyImmuneSlider.value = MyEnemyHealth;
 
+        OverallPowerUpNo = PlayerPrefs.GetInt("PowerupCount"); //store current overall power up count
 
         if (PlayerPrefs.GetString("SelectedMode") == "StoryMode")
         {
-            intCurrentPlayerScore = PlayerPrefs.GetInt("CurrentScore"); //get current player score
+            intCurrentPlayerScore = PlayerPrefs.GetInt("CurrentScore")+1; //get current player score
+            intInitialPlayerScore = intCurrentPlayerScore; //inital score
         }
         else if (PlayerPrefs.GetString("SelectedMode") == "ArcadeMode")
         {
@@ -114,7 +119,8 @@ public class StdPongPlayScript : MonoBehaviour {
 
         //check for level and Increase times played
         CheckForTimesPlayed();
-        
+
+        //Debug.Log(17/3);
     }
 	
 	// Update is called once per frame
@@ -156,9 +162,9 @@ public class StdPongPlayScript : MonoBehaviour {
     void UpdateScores()
     {
         //update score
-        if (intCurrentPlayerScore < 0)
+        if (intCurrentPlayerScore < intInitialPlayerScore)
         {
-            intCurrentPlayerScore = 0;
+            intCurrentPlayerScore = intInitialPlayerScore;
             CurrentPlayerScore.text = intCurrentPlayerScore.ToString();
         }
         else
@@ -182,13 +188,23 @@ public class StdPongPlayScript : MonoBehaviour {
         if (GameTimer < 61) //save the appropriate Quick Victory
         {
             PlayerPrefs.SetInt(MainDirectorScript.strLevel + "QuickVictory", PlayerPrefs.GetInt(MainDirectorScript.strLevel+"QuickVictory") + 1);
-
+            PlayerPrefs.SetInt("QuickVictoryCurrent", 1); //set to show on reward pane
         }
 
-        if (MyPlayerHealth >= 1f)
+        if (MyPlayerHealth >= 1f) //for flawless victory
         {
             PlayerPrefs.SetInt(MainDirectorScript.strLevel + "FlawlessVictory", PlayerPrefs.GetInt(MainDirectorScript.strLevel + "FlawlessVictory") + 1);
+            PlayerPrefs.SetInt("FlawlessVictoryCurrent",1); //set to show on reward pane
         }
+
+        //for collector
+        int ZaPowerUpCount = PlayerPrefs.GetInt("PowerupCount");
+        if (ZaPowerUpCount - OverallPowerUpNo > 10)
+        {
+            PlayerPrefs.SetInt("TheCollector", ZaPowerUpCount/10); //integer division of total powerupcount
+            PlayerPrefs.SetInt("CollectorCurrent", 1); //set to show on reward pane
+        }
+
         
     }
 
@@ -272,8 +288,8 @@ public class StdPongPlayScript : MonoBehaviour {
 
             StoreHighScore();
 
-            PlayerPrefs.GetInt("WinForReward", 0);//set reward state
-
+            PlayerPrefs.SetInt("WinForReward", 0);//set reward state
+            
             SceneManager.LoadScene("GLossSceneForGlobal");            
         }
     }
@@ -297,7 +313,13 @@ public class StdPongPlayScript : MonoBehaviour {
 
             StoreHighScore();
 
-            PlayerPrefs.GetInt("WinForReward", 1);//set reward state
+            PlayerPrefs.SetInt("WinForReward", 1);//set reward state
+
+            if (PlayerPrefs.GetInt("HighestLevel") < intLevel)
+            {
+                PlayerPrefs.SetInt("HighestLevel", intLevel);//Level For Arcade
+            }
+            
 
             MyAudioManager.myAudioClipsSFXs[3].Play();
 
@@ -307,10 +329,14 @@ public class StdPongPlayScript : MonoBehaviour {
     //stores the highscore
     void StoreHighScore() 
     {
-        PlayerPrefs.SetInt("CurrentScore", intCurrentPlayerScore); //local storage
+        if (PlayerPrefs.GetString("SelectedMode")== "StoryMode")
+        {
+            PlayerPrefs.SetInt("CurrentScore", intCurrentPlayerScore); //local storage
 
-        //try to store highscore online
-        gameObject.GetComponent<GrabHighScoresScript>().PutInAllData();
+            //try to store highscore online
+            gameObject.GetComponent<GrabHighScoresScript>().PutInAllData();
+        }
+               
     }
 
     public void GotoSTDScroll()
@@ -412,7 +438,7 @@ public class StdPongPlayScript : MonoBehaviour {
         }
         else if (intLevel == 5)
         {
-            PlayerPrefs.SetInt("HepatitsbPlayed", PlayerPrefs.GetInt("HepatitsbPlayed") + 1);
+            PlayerPrefs.SetInt("HepatitisbPlayed", PlayerPrefs.GetInt("HepatitisbPlayed") + 1);
         }
         else if (intLevel == 6)
         {

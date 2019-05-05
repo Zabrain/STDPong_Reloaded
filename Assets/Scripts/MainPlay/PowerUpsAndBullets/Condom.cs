@@ -149,6 +149,9 @@ public class Condom : MonoBehaviour {
             MyBlinkerCounter = 0;
             //do stuff
 
+
+            PlayerPrefs.SetInt("PowerupCount", PlayerPrefs.GetInt("PowerupCount") + 1); //increase the overall count of powerups
+
         }
 
 

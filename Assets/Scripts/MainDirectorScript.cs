@@ -14,8 +14,9 @@ public class MainDirectorScript : MonoBehaviour {
     public static int intLevel;
     public static string strLevel;
 
-    public static string[] LevelNames=new string[11] { "Zero", "Scabies", "Genital Warts","Herpes","Trichomoniasis","Hepatits B", "Chlamydia","Syphilis", "Gonorrhea", "HIV", "AIDS"};
+    public static string[] LevelNames=new string[11] { "Zero", "Scabies", "Genital Warts","Herpes","Trichomoniasis","Hepatitis B", "Chlamydia","Syphilis", "Gonorrhea", "HIV", "AIDS"};
 
+    public static float GeneralTimer;
     // Use this for initialization
     void Awake () {
 
@@ -24,6 +25,8 @@ public class MainDirectorScript : MonoBehaviour {
         {
             //HighScore Database Upload marker
             PlayerPrefs.SetInt("DBUpload", 0);
+
+            PlayerPrefs.SetInt("HighestLevel", 0);//Level For Arcade
 
             PlayerPrefs.SetString("AllOtherData", "Fresh");
 
@@ -52,7 +55,7 @@ public class MainDirectorScript : MonoBehaviour {
             //Instantiate all pretest and posttest prefabs
             for (int i=1; i<11; i++)
             {
-                PlayerPrefs.SetInt(LevelNames[i] + "Pretest", -1);
+                PlayerPrefs.SetInt(LevelNames[i] + "Pretest", 9);
                 PlayerPrefs.SetInt(LevelNames[i] + "PostTest", -1);
             }
 
@@ -64,7 +67,7 @@ public class MainDirectorScript : MonoBehaviour {
             PlayerPrefs.SetInt("GenitalWartsPlayed", 0);
             PlayerPrefs.SetInt("HerpesPlayed", 0);
             PlayerPrefs.SetInt("TrichomoniasisPlayed", 0);
-            PlayerPrefs.SetInt("HepatitsbPlayed", 0);
+            PlayerPrefs.SetInt("HepatitisbPlayed", 0);
             PlayerPrefs.SetInt("ChlamydiaPlayed", 0);
             PlayerPrefs.SetInt("SyphilisPlayed", 0);
             PlayerPrefs.SetInt("GonorrheaPlayed", 0);
@@ -73,8 +76,9 @@ public class MainDirectorScript : MonoBehaviour {
             
         }
 
+        
         //PlayerPrefs.SetInt("CurrentLevel", 10);
-       // PlayerPrefs.SetString("CurrentScene", "StdPongPlay");//sets the current scene
+        // PlayerPrefs.SetString("CurrentScene", "StdPongPlay");//sets the current scene
 
 
 
@@ -93,8 +97,7 @@ public class MainDirectorScript : MonoBehaviour {
             strLevel = LevelNames[intLevel];
         }
 
-
-
+          
 
 
     }
@@ -116,10 +119,10 @@ public class MainDirectorScript : MonoBehaviour {
 
         //if (Input.GetKeyDown(KeyCode.Escape))
         //{
-                
+
         //}
-
-
+        GeneralTimer += Time.deltaTime;
+        //Debug.Log(GeneralTimer);
     }
 
     public void PauseGame() //pauses the game
@@ -145,5 +148,10 @@ public class MainDirectorScript : MonoBehaviour {
     public void HelpGame() //pauses the game
     {
         IsGamePaused = true;
+    }
+
+    private void OnDestroy()
+    {
+       PlayerPrefs.SetFloat("GeneralTimer", PlayerPrefs.GetFloat("GeneralTimer")+GeneralTimer);
     }
 }

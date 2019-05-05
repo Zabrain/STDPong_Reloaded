@@ -45,8 +45,8 @@ public class RewardScript : MonoBehaviour
         PlayerPrefs.SetInt("QuickVictoryCurrent", 0);
         PlayerPrefs.SetInt("FlawlessVictoryCurrent", 0);
         PlayerPrefs.SetInt("CollectorCurrent", 0);
-        PlayerPrefs.SetInt("STDPantoMathCurrent", 0);
         PlayerPrefs.SetInt("STDPolyMathCurrent", 0);
+        PlayerPrefs.SetInt("STDPantoMathCurrent", 0);
         PlayerPrefs.SetInt("GrandMasterCurrent", 0);
 
         // Debug.Log(PlayerPrefs.GetInt("WinForReward") + "  Win for reward");
@@ -67,8 +67,8 @@ public class RewardScript : MonoBehaviour
         QuickVictoryObject.SetActive(false);
         FlawlessVictoryObject.SetActive(false);
         CollectorObject.SetActive(false);
-        STDPantoMathObject.SetActive(false);
         STDPolyMathObject.SetActive(false);
+        STDPantoMathObject.SetActive(false);
         GrandMasterObject.SetActive(false);
 
         if (QuickVictoryCurrent == 1) //check for first reward
