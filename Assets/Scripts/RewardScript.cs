@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class RewardScript : MonoBehaviour
 {
@@ -14,6 +15,13 @@ public class RewardScript : MonoBehaviour
     public GameObject GrandMasterObject;
     public GameObject ContinueObject;
     public GameObject NextObject;
+
+    public TextMeshProUGUI QuickVictoryText;
+    public TextMeshProUGUI FlawlessVictoryText;
+    public TextMeshProUGUI CollectorText;
+    public TextMeshProUGUI STDPantoMathText;
+    public TextMeshProUGUI STDPolyMathText;
+    public TextMeshProUGUI GrandMasterText;
 
     int QuickVictoryCurrent;
     int FlawlessVictoryCurrent;
@@ -74,26 +82,31 @@ public class RewardScript : MonoBehaviour
         if (QuickVictoryCurrent == 1) //check for first reward
         {
             QuickVictoryObject.SetActive(true);
+            QuickVictoryText.text = "You defeated an STD within 30 Seconds";
             QuickVictoryCurrent = 0;
         }
         else if (FlawlessVictoryCurrent == 1) //check for reward
         {
             FlawlessVictoryObject.SetActive(true);
+            FlawlessVictoryText.text = "You defeated an STD with with your 100% Immunity remaining!";
             FlawlessVictoryCurrent = 0;
         }
         else if (CollectorCurrent == 1) //check for reward
         {
             CollectorObject.SetActive(true);
+            CollectorText.text = "You collected "+ (PlayerPrefs.GetInt("PowerupCount") / 10)*10 +" power-ups so far!";
             CollectorCurrent = 0;
         }
         else if (STDPantoMathCurrent == 1) //check for reward
         {
             STDPantoMathObject.SetActive(true);
+            STDPantoMathText.text = "You answered 40 questions correctly on first try!";
             STDPantoMathCurrent = 0;
         }
         else if (STDPolyMathCurrent == 1) //check for reward
         {
             STDPolyMathObject.SetActive(true);
+            STDPolyMathText.text = "You answered 20 questions correctly on first try!";
             STDPolyMathCurrent = 0;
         }
         else if (GrandMasterCurrent == 1) //check for reward

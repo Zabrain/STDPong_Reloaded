@@ -38,7 +38,7 @@ public class PlayerScript : MonoBehaviour {
             {
                 SharpCondomsPlayerSizeCounter += 1;
             }
-            if (SharpCondomsPlayerSizeCounter > 200)
+            if (SharpCondomsPlayerSizeCounter > 240)
             {
                 myPlayer.transform.localScale = new Vector2(PlayerObjectSize.x, PlayerObjectSize.y);//reduce player size to normal size       
                 SharpCondomsPlayerSizeCounter = 0;

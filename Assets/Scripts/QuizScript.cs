@@ -41,6 +41,10 @@ public class QuizScript : MonoBehaviour {
 
     int TotalIntialQuestsAns;
 
+    int intCurrentScore;
+    public TextMeshProUGUI theScoreObject;
+
+
     string[,] QuizQuestions = new string[5, 6];
     //string[,] AIDSQuestions = new string [5,2];
     //string[,] HIVQuestions = new string[5, 2];
@@ -74,13 +78,20 @@ public class QuizScript : MonoBehaviour {
 
         TotalIntialQuestsAns = PlayerPrefs.GetInt("Total Questions Answered");
 
+        if (PlayerPrefs.GetString("SelectedMode") == "StoryMode") //only store score if mode is story mode
+        {
+            intCurrentScore = PlayerPrefs.GetInt("CurrentScore") + 1;
+        }
+        else { intCurrentScore = 0; }
     }
 	
 	// Update is called once per frame
 	void Update () {
         
         QuestionMeterSlider.value = QuestionMeterValue; //value of the std meter
-        
+
+        theScoreObject.text = "YOUR SCORE: " + intCurrentScore.ToString(); //update score on screen
+
     }
 
     public void AButton_Click()
@@ -131,7 +142,7 @@ public class QuizScript : MonoBehaviour {
 
                 if (PlayerPrefs.GetString("SelectedMode") == "StoryMode") //only store score if mode is story mode
                 {
-                    PlayerPrefs.SetInt("CurrentScore", PlayerPrefs.GetInt("CurrentScore") + 5);
+                    intCurrentScore += 5;
                 }                    
 
                 CorrectImg.SetActive(true);//show right image
@@ -165,17 +176,19 @@ public class QuizScript : MonoBehaviour {
 
         if (CurrentQuestion >= 5) //question has finished
         {
-            if (PlayerPrefs.GetInt(MainDirectorScript.strLevel + "PostTest")< QuestionsAnswered)
-            {
-                PlayerPrefs.SetInt(MainDirectorScript.strLevel + "PostTest", QuestionsAnswered);
-            }
-            
-
-            CheckForPantAndPoly(); //checks to update rewards
-
             if (PlayerPrefs.GetString("SelectedMode") == "StoryMode") //only store score if mode is story mode
             {
-                //try to store highscore online
+                PlayerPrefs.SetInt("CurrentScore", intCurrentScore); //add score to prefab
+
+                if (PlayerPrefs.GetInt(MainDirectorScript.strLevel + "PostTest")< QuestionsAnswered)
+                {
+                    PlayerPrefs.SetInt(MainDirectorScript.strLevel + "PostTest", QuestionsAnswered);
+                }
+            
+
+                CheckForPantAndPoly(); //checks to update rewards
+                            
+                 //try to store highscore online
                 gameObject.GetComponent<GrabHighScoresScript>().PutInAllData();
             }
                                                                       

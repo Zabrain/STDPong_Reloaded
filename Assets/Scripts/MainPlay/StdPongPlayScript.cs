@@ -67,6 +67,9 @@ public class StdPongPlayScript : MonoBehaviour {
 
     int OverallPowerUpNo;
 
+
+    public TextMeshProUGUI myFinalScores;
+
     private void Awake()
     {
         
@@ -185,7 +188,7 @@ public class StdPongPlayScript : MonoBehaviour {
 
     void CheckForRewards() //data!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     {
-        if (GameTimer < 61) //save the appropriate Quick Victory
+        if (GameTimer < 31) //save the appropriate Quick Victory
         {
             PlayerPrefs.SetInt(MainDirectorScript.strLevel + "QuickVictory", PlayerPrefs.GetInt(MainDirectorScript.strLevel+"QuickVictory") + 1);
             PlayerPrefs.SetInt("QuickVictoryCurrent", 1); //set to show on reward pane
@@ -283,6 +286,8 @@ public class StdPongPlayScript : MonoBehaviour {
     {
         if (MyPlayerHealth <= 0f)
         {
+            myFinalScores.text = intCurrentPlayerScore.ToString(); //show on win panel
+
             MainDirectorScript.boolLeveleStart = false;//pause the game
             WinPanel_Object.SetActive(true);//open win panel
 
@@ -307,6 +312,8 @@ public class StdPongPlayScript : MonoBehaviour {
         if (MyEnemyHealth <= 0f)
         {
             CheckForRewards();//checks if player has quick victory
+
+            myFinalScores.text = intCurrentPlayerScore.ToString(); //show on win panel
 
             MainDirectorScript.boolLeveleStart = false;//pause the game
             WinPanel_Object.SetActive(true);//open win panel
