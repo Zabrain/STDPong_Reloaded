@@ -32,6 +32,12 @@ public class MainMenu : MonoBehaviour {
             ContinueBtnDisabledObject.SetActive(true);
         }
 
+        if (MainDirectorScript.intLevel > 10)
+        {
+            ContinueBtnObject.SetActive(false);
+            ContinueBtnDisabledObject.SetActive(true);
+        }
+
 
         //for QuickVictory
         int intQuickVictory = PlayerPrefs.GetInt("ScabiesQuickVictory") +
@@ -104,7 +110,12 @@ public class MainMenu : MonoBehaviour {
         PlayerPrefs.SetFloat("MyEnemyHealth", 1f); //normalize enemy health
     }
 
-    
+    public void ScrollCollected()
+    {
+        PlayerPrefs.SetString("SelectedMode", "ScrollCollected");//intentifies the mode in the scroll scene
+        SceneManager.LoadScene("ScrollGotten");
+        
+    }
 
-    
+
 }

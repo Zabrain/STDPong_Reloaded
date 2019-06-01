@@ -111,6 +111,7 @@ public class StdPongPlayScript : MonoBehaviour {
         }
         else if (PlayerPrefs.GetString("SelectedMode") == "ArcadeMode")
         {
+            PlayerPrefs.SetInt("ArcadeScore", 0);
             intCurrentPlayerScore = 0; //get current player score
         }
         
@@ -343,7 +344,11 @@ public class StdPongPlayScript : MonoBehaviour {
             //try to store highscore online
             gameObject.GetComponent<GrabHighScoresScript>().PutInAllData();
         }
-               
+        else if (PlayerPrefs.GetString("SelectedMode") == "ArcadeMode")
+        {
+            PlayerPrefs.SetInt("ArcadeScore", intCurrentPlayerScore);
+        }
+            
     }
 
     public void GotoSTDScroll()

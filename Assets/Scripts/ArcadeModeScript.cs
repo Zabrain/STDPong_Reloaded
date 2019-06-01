@@ -145,7 +145,7 @@ public class ArcadeModeScript : MonoBehaviour
 
     public void ScabiesSTD()
     {
-        if (HighestLevel > 1)
+        if (HighestLevel >= 1)
         {
             PlayerPrefs.SetInt("ArcadeLevel", 1);//set the Arcade level
             LoadTheSTDPongPlay();
@@ -157,7 +157,7 @@ public class ArcadeModeScript : MonoBehaviour
     }
     public void GenitalWartsSTD()
     {
-        if (HighestLevel > 2) {
+        if (HighestLevel >= 2) {
             PlayerPrefs.SetInt("ArcadeLevel", 2);//set the Arcade level
             LoadTheSTDPongPlay();
         }
@@ -167,7 +167,7 @@ public class ArcadeModeScript : MonoBehaviour
         }
     }
     public void HerpesSTD(){
-        if (HighestLevel > 3)
+        if (HighestLevel >= 3)
         {
             PlayerPrefs.SetInt("ArcadeLevel", 3);//set the Arcade level
             LoadTheSTDPongPlay();
@@ -178,7 +178,7 @@ public class ArcadeModeScript : MonoBehaviour
         }
     }
     public void TrichomoniasisSTD(){
-        if (HighestLevel > 4)
+        if (HighestLevel >= 4)
         {
             PlayerPrefs.SetInt("ArcadeLevel", 4);//set the Arcade level
             LoadTheSTDPongPlay();
@@ -189,7 +189,7 @@ public class ArcadeModeScript : MonoBehaviour
         }
     }
     public void HepatitsBSTD(){
-        if (HighestLevel > 5)
+        if (HighestLevel >= 5)
         {
             PlayerPrefs.SetInt("ArcadeLevel", 5);//set the Arcade level
             LoadTheSTDPongPlay();
@@ -200,7 +200,7 @@ public class ArcadeModeScript : MonoBehaviour
         }
     }
     public void ChlamydiaSTD(){
-        if (HighestLevel > 6)
+        if (HighestLevel >= 6)
         {
             PlayerPrefs.SetInt("ArcadeLevel", 6);//set the Arcade level
             LoadTheSTDPongPlay();
@@ -212,10 +212,10 @@ public class ArcadeModeScript : MonoBehaviour
 
     }
     public void SyphilisSTD(){
-        if (HighestLevel > 7)
+        if (HighestLevel >= 7)
         {
             PlayerPrefs.SetInt("ArcadeLevel", 7);//set the Arcade level
-            SceneManager.LoadScene("StoryAnimation");
+            LoadTheSTDPongPlay();
         }
         else
         {
@@ -224,10 +224,10 @@ public class ArcadeModeScript : MonoBehaviour
 
     }
     public void GonorrheaSTD(){
-        if (HighestLevel > 8)
+        if (HighestLevel >= 8)
         {
             PlayerPrefs.SetInt("ArcadeLevel", 8);//set the Arcade level
-            SceneManager.LoadScene("StoryAnimation");
+            LoadTheSTDPongPlay();
         }
         else
         {
@@ -236,7 +236,7 @@ public class ArcadeModeScript : MonoBehaviour
 
     }
     public void HIVSTD(){
-        if (HighestLevel > 9)
+        if (HighestLevel >= 9)
         {
             PlayerPrefs.SetInt("ArcadeLevel", 9);//set the Arcade level
             LoadTheSTDPongPlay();
@@ -249,7 +249,7 @@ public class ArcadeModeScript : MonoBehaviour
     }
     public void AIDSSTD()
     {
-        if (HighestLevel > 10)
+        if (HighestLevel >= 10)
         {
             PlayerPrefs.SetInt("ArcadeLevel", 10);//set the Arcade level
             LoadTheSTDPongPlay();

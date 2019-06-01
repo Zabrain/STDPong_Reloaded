@@ -48,6 +48,10 @@ public class LoaderSceneScript : MonoBehaviour {
     {
         StartCoroutine(LoadSceneAsynchronously("PreQuizScene"));
     }
+    public void LoadScrollGotten() //load prerest
+    {
+        StartCoroutine(LoadSceneAsynchronously("ScrollGotten"));
+    }
 
     IEnumerator LoadSceneAsynchronously(string SceneToLoad)
     {

@@ -184,11 +184,10 @@ public class QuizScript : MonoBehaviour {
                 {
                     PlayerPrefs.SetInt(MainDirectorScript.strLevel + "PostTest", QuestionsAnswered);
                 }
-            
 
                 CheckForPantAndPoly(); //checks to update rewards
-                            
-                 //try to store highscore online
+
+                //try to store highscore online
                 gameObject.GetComponent<GrabHighScoresScript>().PutInAllData();
             }
                                                                       
@@ -207,6 +206,12 @@ public class QuizScript : MonoBehaviour {
             {
                 PlayerPrefs.SetFloat("MyEnemyHealth", 1f); //normalize enemy health
                 
+                if (intLevel > 9)//check if Grandmaster
+                {
+                    PlayerPrefs.SetInt("GrandMasterCurrent", 1); //for reward scene
+                    PlayerPrefs.SetInt("TheGrandMaster", 1); //for Data
+                }
+
                 MyAudioManager.myAudioClipsSFXs[3].Play(); //
                 WinQuizPanel.SetActive(true);//activate win panel
                 
@@ -239,6 +244,8 @@ public class QuizScript : MonoBehaviour {
                     PlayerPrefs.SetInt("TheSTDPantoMath", 1); //for Data
                 }
             }
+
+           
 
         }
 
@@ -307,7 +314,7 @@ public class QuizScript : MonoBehaviour {
             QuizQuestions[1, 4] = "TRUE";//Option
             QuizQuestions[1, 5] = "Rash: infected skin becomes itchy, irritated, warm, reddened and blistered. Skin irritation is more likely to be seen in the webbing between the fingers and toes, in the folds of the elbow, armpit, belt-line, abdomen, groin and in the genital area.";//Explained Answer
 
-            QuizQuestions[2, 0] = "Scabies typically develop within a week of infestation.";//Question 3
+            QuizQuestions[2, 0] = "How long does it typically take Scabies to develop it's infestation?";//Question 3
             QuizQuestions[2, 1] = "2 to 6 weeks";//Answer
             QuizQuestions[2, 2] = "2 to 6 weeks";//Option
             QuizQuestions[2, 3] = "1-3 days";//Option

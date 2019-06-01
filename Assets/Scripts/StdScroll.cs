@@ -38,7 +38,7 @@ public class StdScroll : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        MainDirectorScript.intLevel = PlayerPrefs.GetInt("PlayedBefore");
+        //MainDirectorScript.intLevel = PlayerPrefs.GetInt("PlayedBefore");
 
         LoadStdScroll();
 
@@ -132,10 +132,19 @@ public class StdScroll : MonoBehaviour {
 
     public void Continue_CLick()
     {
+        if (PlayerPrefs.GetString("SelectedMode") == "ScrollCollected")
+        {
+            ContentPane.SetActive(false);
+            LoadingPane.SetActive(true);
+            LoadingPane.GetComponent<LoaderSceneScript>().LoadScrollGotten(); //call the loader
+        }
+        else
+        {
             ContentPane.SetActive(false);
             LoadingPane.SetActive(true);
             LoadingPane.GetComponent<LoaderSceneScript>().LoadSceneQuizGame(); //call the loader
-            //SceneManager.LoadScene("QuizGame");
+        }
+            
     }
 
 

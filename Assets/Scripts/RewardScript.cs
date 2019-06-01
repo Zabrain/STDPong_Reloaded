@@ -110,8 +110,9 @@ public class RewardScript : MonoBehaviour
             STDPolyMathCurrent = 0;
         }
         else if (GrandMasterCurrent == 1) //check for reward
-        {
+        {            
             GrandMasterObject.SetActive(true);
+            GrandMasterText.text = "You defeated all the STDs!";
             GrandMasterCurrent = 0;
         }
         else //if all reward shown, continue

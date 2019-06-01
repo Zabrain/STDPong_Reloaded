@@ -92,12 +92,17 @@ public class MainDirectorScript : MonoBehaviour {
         }
         else if (PlayerPrefs.GetString("SelectedMode") == "ArcadeMode")
         {
-            intLevel = PlayerPrefs.GetInt("ArcadeLevel");//get the current level
+            intLevel = PlayerPrefs.GetInt("ArcadeLevel");//get the Arcade level
+
+            strLevel = LevelNames[intLevel];
+        }
+        else if (PlayerPrefs.GetString("SelectedMode") == "ScrollCollected")
+        {
+            intLevel = PlayerPrefs.GetInt("ScrollToSee");//get the Scroll level
 
             strLevel = LevelNames[intLevel];
         }
 
-          
 
 
     }
@@ -149,6 +154,13 @@ public class MainDirectorScript : MonoBehaviour {
     {
         IsGamePaused = true;
     }
+
+    public void PrivaryPolicyButton() //consent given
+    {
+        Application.OpenURL("https://zabrain.wordpress.com/2019/05/20/std-pong-privacy-policy/");
+
+    }
+
 
     private void OnDestroy()
     {

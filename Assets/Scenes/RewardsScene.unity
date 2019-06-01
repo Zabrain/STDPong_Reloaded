@@ -264,6 +264,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1661574298093588197, guid: b18448c84ff23fb449ebea426158c16c,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661574298093588197, guid: b18448c84ff23fb449ebea426158c16c,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1661574298514074965, guid: b18448c84ff23fb449ebea426158c16c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -400,16 +410,6 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1661574298093588197, guid: b18448c84ff23fb449ebea426158c16c,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1661574298093588197, guid: b18448c84ff23fb449ebea426158c16c,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1661574297881976123, guid: b18448c84ff23fb449ebea426158c16c,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -419,6 +419,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661574297881976123, guid: b18448c84ff23fb449ebea426158c16c,
+        type: 3}
+      propertyPath: m_text
+      value: Your Reward is a 'Flawless' Badge
       objectReference: {fileID: 0}
     - target: {fileID: 1661574298659629088, guid: b18448c84ff23fb449ebea426158c16c,
         type: 3}
@@ -563,6 +568,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1661574298093588197, guid: b18448c84ff23fb449ebea426158c16c,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661574298093588197, guid: b18448c84ff23fb449ebea426158c16c,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1661574298514074965, guid: b18448c84ff23fb449ebea426158c16c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -699,16 +714,6 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1661574298093588197, guid: b18448c84ff23fb449ebea426158c16c,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1661574298093588197, guid: b18448c84ff23fb449ebea426158c16c,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1661574297881976123, guid: b18448c84ff23fb449ebea426158c16c,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -718,6 +723,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661574297881976123, guid: b18448c84ff23fb449ebea426158c16c,
+        type: 3}
+      propertyPath: m_text
+      value: Your Reward is a 'Pantomath' Badge
       objectReference: {fileID: 0}
     - target: {fileID: 1661574298093588199, guid: b18448c84ff23fb449ebea426158c16c,
         type: 3}
@@ -742,6 +752,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661574298093588197, guid: b18448c84ff23fb449ebea426158c16c,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661574298093588197, guid: b18448c84ff23fb449ebea426158c16c,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1661574298514074965, guid: b18448c84ff23fb449ebea426158c16c,
         type: 3}
@@ -879,16 +899,6 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1661574298093588197, guid: b18448c84ff23fb449ebea426158c16c,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1661574298093588197, guid: b18448c84ff23fb449ebea426158c16c,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1661574297881976123, guid: b18448c84ff23fb449ebea426158c16c,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -898,6 +908,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661574297881976123, guid: b18448c84ff23fb449ebea426158c16c,
+        type: 3}
+      propertyPath: m_text
+      value: Your Reward is a 'Grand Master' Badge
       objectReference: {fileID: 0}
     - target: {fileID: 1661574298093588199, guid: b18448c84ff23fb449ebea426158c16c,
         type: 3}
@@ -922,6 +937,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661574298093588197, guid: b18448c84ff23fb449ebea426158c16c,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661574298093588197, guid: b18448c84ff23fb449ebea426158c16c,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1661574298514074965, guid: b18448c84ff23fb449ebea426158c16c,
         type: 3}
@@ -1059,16 +1084,6 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1661574298093588197, guid: b18448c84ff23fb449ebea426158c16c,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1661574298093588197, guid: b18448c84ff23fb449ebea426158c16c,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1661574297881976123, guid: b18448c84ff23fb449ebea426158c16c,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -1078,6 +1093,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661574297881976123, guid: b18448c84ff23fb449ebea426158c16c,
+        type: 3}
+      propertyPath: m_text
+      value: Your Reward is a 'Quick Victory' Badge
       objectReference: {fileID: 0}
     - target: {fileID: 1661574298659629088, guid: b18448c84ff23fb449ebea426158c16c,
         type: 3}
@@ -1899,6 +1919,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1661574298093588197, guid: b18448c84ff23fb449ebea426158c16c,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661574298093588197, guid: b18448c84ff23fb449ebea426158c16c,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1661574298514074965, guid: b18448c84ff23fb449ebea426158c16c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2035,16 +2065,6 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1661574298093588197, guid: b18448c84ff23fb449ebea426158c16c,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1661574298093588197, guid: b18448c84ff23fb449ebea426158c16c,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1661574297881976123, guid: b18448c84ff23fb449ebea426158c16c,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -2054,6 +2074,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661574297881976123, guid: b18448c84ff23fb449ebea426158c16c,
+        type: 3}
+      propertyPath: m_text
+      value: Your Reward is a 'PolyMath' Badge
       objectReference: {fileID: 0}
     - target: {fileID: 1661574298093588199, guid: b18448c84ff23fb449ebea426158c16c,
         type: 3}
@@ -2242,6 +2267,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1661574298093588197, guid: b18448c84ff23fb449ebea426158c16c,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661574298093588197, guid: b18448c84ff23fb449ebea426158c16c,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1661574298514074965, guid: b18448c84ff23fb449ebea426158c16c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2357,16 +2392,6 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1661574298093588197, guid: b18448c84ff23fb449ebea426158c16c,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1661574298093588197, guid: b18448c84ff23fb449ebea426158c16c,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1661574297881976123, guid: b18448c84ff23fb449ebea426158c16c,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -2376,6 +2401,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661574297881976123, guid: b18448c84ff23fb449ebea426158c16c,
+        type: 3}
+      propertyPath: m_text
+      value: Your Reward is a 'COLLECTOR' Badge
       objectReference: {fileID: 0}
     - target: {fileID: 1661574298093588199, guid: b18448c84ff23fb449ebea426158c16c,
         type: 3}

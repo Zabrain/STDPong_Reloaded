@@ -11,7 +11,7 @@ public class ConsentScript : MonoBehaviour
         if (PlayerPrefs.GetString("Consented") == "Yes")
         {
             SceneManager.LoadScene("Mainmenu");
-        }    
+        }
     }
 
     void Start()
@@ -27,7 +27,7 @@ public class ConsentScript : MonoBehaviour
 
     public void AgreeButton() //consent given
     {
-        PlayerPrefs.GetString("Consented", "Yes");
+        PlayerPrefs.SetString("Consented", "Yes");
 
         SceneManager.LoadScene("Mainmenu");
 
@@ -35,10 +35,13 @@ public class ConsentScript : MonoBehaviour
 
     public void DisagreeButton() //consent given
     {
-        PlayerPrefs.GetString("Consented", "No");
+        PlayerPrefs.SetString("Consented", "No");
 
         Application.Quit();
 
     }
+
+   
+    
 
 }

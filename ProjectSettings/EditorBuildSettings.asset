@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/ArcadeMode.unity
     guid: 64975ce3728315d4d9c8e0c37687d8c5
   - enabled: 1
+    path: Assets/Scenes/ScrollGotten.unity
+    guid: 879e9927e0a118f458d25b3ffb323622
+  - enabled: 1
     path: Assets/Scenes/STDScroll.unity
     guid: a646ed9aeff361540a6cd1df03261eb3
   - enabled: 1

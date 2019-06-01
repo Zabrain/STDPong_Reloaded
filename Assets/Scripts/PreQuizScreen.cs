@@ -85,7 +85,7 @@ public class PreQuizScreen : MonoBehaviour
 
         AttachQuestionAndNumber(); //attach question
 
-        Debug.Log(PlayerPrefs.GetInt("ScabiesPretest"));
+        //Debug.Log(PlayerPrefs.GetInt("ScabiesPretest"));
     }
 
     // Update is called once per frame
@@ -184,7 +184,7 @@ public class PreQuizScreen : MonoBehaviour
             QuizQuestions[1, 4] = "TRUE";//Option
             QuizQuestions[1, 5] = "Rash: infected skin becomes itchy, irritated, warm, reddened and blistered. Skin irritation is more likely to be seen in the webbing between the fingers and toes, in the folds of the elbow, armpit, belt-line, abdomen, groin and in the genital area.";//Explained Answer
 
-            QuizQuestions[2, 0] = "Scabies typically develop within a week of infestation.";//Question 3
+            QuizQuestions[2, 0] = "How long does it typically take Scabies to develop it's infestation?";//Question 3
             QuizQuestions[2, 1] = "2 to 6 weeks";//Answer
             QuizQuestions[2, 2] = "2 to 6 weeks";//Option
             QuizQuestions[2, 3] = "1-3 days";//Option
